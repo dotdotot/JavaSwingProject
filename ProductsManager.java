@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import posProject.ExpirationDate_b;
+import posProject.Product_b;
+import posProject.SeatCheck_b;
+
 import java.util.*;
 
 class ProductsManager_Main extends JFrame {
@@ -108,7 +113,7 @@ class SeatProductManager extends JFrame {
 		newProductButton.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				setVisible(false);
-				new ProductsManager_Main(user);
+				new seatProductAdd(user);
 			}
 		});
 
@@ -344,7 +349,7 @@ class NormalProductManager extends JFrame {
 		newProductButton.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				setVisible(false);
-				new ProductsManager_Main(user);
+				new ProductAddChoice(user);
 			}
 		});
 
@@ -538,12 +543,16 @@ class NormalProductManager extends JFrame {
 	}
 }
 
-// TODO 상품추가Class
-class ProductAdd extends JFrame {
+// TODO 좌석상품추가cLASS
+class seatProductAdd extends JFrame {
 	// TODO 상품추가 정보
 	User user = new User();
 
-	ProductAdd(User u) {
+	boolean p = false;
+	boolean up = false;
+	boolean d = false;
+
+	seatProductAdd(User u) {
 		System.out.println("상품 추가 폼");
 
 		user = u;
@@ -571,8 +580,592 @@ class ProductAdd extends JFrame {
 			}
 		});
 
-		setSize(710,400);
+		Font font = new Font("이텔릭체", Font.PLAIN, 20);
+
+		JLabel pNameLabel = new JLabel("영화이름");
+		pNameLabel.setBounds(90, 30, 200, 30);
+		pNameLabel.setFont(font);
+		JTextField pNameTextField = new JTextField();
+		pNameTextField.setBounds(90, 60, 400, 30);
+
+		JLabel pPriceLabel = new JLabel("영화가격");
+		pPriceLabel.setBounds(90, 90, 200, 30);
+		pPriceLabel.setFont(font);
+		JTextField pPriceTextField = new JTextField();
+		pPriceTextField.setBounds(90, 120, 400, 30);
+
+		JLabel puPriceLabel = new JLabel("영화단가");
+		puPriceLabel.setBounds(90, 150, 200, 30);
+		puPriceLabel.setFont(font);
+		JTextField pUPriceteTextField = new JTextField();
+		pUPriceteTextField.setBounds(90, 180, 400, 30);
+
+		JLabel pDescriptionLabel = new JLabel("영화설명");
+		pDescriptionLabel.setBounds(90, 210, 200, 30);
+		pDescriptionLabel.setFont(font);
+		JTextField pDescriptionTextField = new JTextField();
+		pDescriptionTextField.setBounds(90, 240, 400, 30);
+
+		JLabel pDiscountLabel = new JLabel("할인율");
+		pDiscountLabel.setBounds(90, 270, 200, 30);
+		pDiscountLabel.setFont(font);
+		JTextField pDiscountTextField = new JTextField();
+		pDiscountTextField.setBounds(90, 300, 400, 30);
+
+		// TODO 좌석상품 추가
+		JButton newProductButton = new JButton("상품추가");
+		newProductButton.setBounds(600, 10, 90, 25);
+		newProductButton.setBackground(Color.WHITE);
+		newProductButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				String name = pNameTextField.getText();
+				String price = pPriceTextField.getText();
+				String uprice = pUPriceteTextField.getText();
+				String description = pDescriptionTextField.getText();
+				String discount = pDiscountTextField.getText();
+
+				// String int int int String int
+				int priceNum = priceNumberFormatException(price);
+				int upriceNum = uPriceNumberFormatException(uprice, price);
+				int discountNum = discountNumberFormatException(discount);
+
+				if (p == true && up == true && d == true) {
+					SeatCheck_b s = new SeatCheck_b(name, priceNum, upriceNum, description, discountNum);
+					user.pos.seatCheck_b.add(s);
+
+					JOptionPane.showMessageDialog(null, "좌석상품이 추가되었습니다.");
+					setVisible(false);
+					new Main(user);
+				}
+			}
+		});
+
+		c.add(backButton);
+		c.add(pNameLabel);
+		c.add(pNameTextField);
+		c.add(pPriceLabel);
+		c.add(pPriceTextField);
+		c.add(puPriceLabel);
+		c.add(pUPriceteTextField);
+		c.add(pDescriptionLabel);
+		c.add(pDescriptionTextField);
+		c.add(pDiscountLabel);
+		c.add(pDiscountTextField);
+		c.add(newProductButton);
+
+		setSize(710, 400);
 		setVisible(true);
+	}
+
+	public int priceNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			p = true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "가격은 정수형으로 해주세요 ex)1000");
+			p = false;
+		}
+		return num;
+	}
+
+	public int uPriceNumberFormatException(String text, String text2) {
+		int num = 0;
+		int num2 = 0;
+		try {
+			num = Integer.parseInt(text);
+			num2 = Integer.parseInt(text2);
+
+			if (num > num2) {
+				JOptionPane.showMessageDialog(null, "단가는 가격보다 높을 수 없습니다.");
+				up = false;
+			} else {
+				up = true;
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "단가는 정수형으로 해주세요 ex)1000");
+			up = false;
+		}
+		return num;
+	}
+
+	public int discountNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			if (num < 1 && num > 100) {
+				JOptionPane.showMessageDialog(null, "할인율은 1~100 사이여야 합니다.");
+			} else {
+				d = true;
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "할인율은 정수형으로 해주세요 ex)50");
+			d = false;
+		}
+		return num;
+	}
+}
+
+// TODO 상품 추가 선택 폼
+class ProductAddChoice extends JFrame {
+	User user = new User();
+
+	ProductAddChoice(User u) {
+		user = u;
+		System.out.println("상품 추가 선택 폼");
+		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
+		setTitle("상품 추가 선택");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// 프레임을 화면 중앙에 배치
+		setLocationRelativeTo(null);
+
+		// Main컨테이너 이름을 c로 설정, 배치관리자 삭제, 백그라운드 설정
+		Container c = getContentPane();
+		c.setLayout(null);
+		// 일단 하얀색으로 배경색 설정, 추후 이미지로 바꿀 예정
+		c.setBackground(Color.WHITE);
+
+		// TODO 상품상세정보 이전
+		JButton backButton = new JButton("이전");
+		backButton.setBounds(10, 10, 60, 25);
+		backButton.setBackground(Color.WHITE);
+		backButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				setVisible(false);
+				new ProductsManager_Main(user);
+			}
+		});
+
+		// TODO 유통기한 상품
+		JButton seatButton = new JButton("유통기한 상품");
+		seatButton.setBounds(40, 50, 150, 80);
+		seatButton.setBackground(Color.WHITE);
+		seatButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				setVisible(false);
+				new ProductAddExpiration(user);
+			}
+		});
+
+		// TODO 일반상품
+		JButton normalButton = new JButton("일반 상품");
+		normalButton.setBounds(200, 50, 150, 80);
+		normalButton.setBackground(Color.WHITE);
+		normalButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				setVisible(false);
+				new ProductAddNormal(user);
+			}
+		});
+
+		c.add(backButton);
+		c.add(seatButton);
+		c.add(normalButton);
+
+		setSize(400, 200);
+		setVisible(true);
+	}
+}
+
+// TODO 유통기한 상품 추가Class
+class ProductAddExpiration extends JFrame {
+	// String int int int String int String
+	// TODO 상품추가 정보
+	User user = new User();
+
+	boolean p = false;
+	boolean n = false;
+	boolean up = false;
+	boolean d = false;
+
+	ProductAddExpiration(User u) {
+		System.out.println("유통기한 추가 폼");
+
+		user = u;
+		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
+		setTitle("상품 추가");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// 프레임을 화면 중앙에 배치
+		setLocationRelativeTo(null);
+
+		// Main컨테이너 이름을 c로 설정, 배치관리자 삭제, 백그라운드 설정
+		Container c = getContentPane();
+		c.setLayout(null);
+		// 일단 하얀색으로 배경색 설정, 추후 이미지로 바꿀 예정
+		c.setBackground(Color.WHITE);
+
+		// TODO 상품상세정보 이전
+		JButton backButton = new JButton("이전");
+		backButton.setBounds(10, 10, 60, 25);
+		backButton.setBackground(Color.WHITE);
+		backButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				setVisible(false);
+				new ProductsManager_Main(user);
+			}
+		});
+
+		Font font = new Font("이텔릭체", Font.PLAIN, 15);
+
+		JLabel pNameLabel = new JLabel("상품이름");
+		pNameLabel.setBounds(90, 10, 200, 20);
+		pNameLabel.setFont(font);
+		JTextField pNameTextField = new JTextField();
+		pNameTextField.setBounds(90, 30, 400, 30);
+
+		JLabel pPriceLabel = new JLabel("상품가격");
+		pPriceLabel.setBounds(90, 60, 200, 20);
+		pPriceLabel.setFont(font);
+		JTextField pPriceTextField = new JTextField();
+		pPriceTextField.setBounds(90, 80, 400, 30);
+
+		JLabel pNumLabel = new JLabel("상품수량");
+		pNumLabel.setBounds(90, 110, 200, 20);
+		pNumLabel.setFont(font);
+		JTextField pNumTextField = new JTextField();
+		pNumTextField.setBounds(90, 130, 400, 30);
+
+		JLabel puPriceLabel = new JLabel("상품단가");
+		puPriceLabel.setBounds(90, 160, 200, 20);
+		puPriceLabel.setFont(font);
+		JTextField pUPriceteTextField = new JTextField();
+		pUPriceteTextField.setBounds(90, 180, 400, 30);
+
+		JLabel pDescriptionLabel = new JLabel("상품설명");
+		pDescriptionLabel.setBounds(90, 210, 200, 20);
+		pDescriptionLabel.setFont(font);
+		JTextField pDescriptionTextField = new JTextField();
+		pDescriptionTextField.setBounds(90, 230, 400, 30);
+
+		JLabel pDiscountLabel = new JLabel("할인율");
+		pDiscountLabel.setBounds(90, 260, 200, 20);
+		pDiscountLabel.setFont(font);
+		JTextField pDiscountTextField = new JTextField();
+		pDiscountTextField.setBounds(90, 280, 400, 30);
+
+		JLabel expriationLabel = new JLabel("유통기한 ex)1998년03월08일");
+		expriationLabel.setBounds(90, 310, 400, 30);
+		expriationLabel.setFont(font);
+
+		JLabel yearLabel = new JLabel("년");
+		yearLabel.setBounds(150, 330, 20, 30);
+		JTextField yearTextField = new JTextField();
+		yearTextField.setBounds(90, 330, 50, 30);
+		JLabel monthLabel = new JLabel("월");
+		monthLabel.setBounds(240, 330, 50, 30);
+		JTextField monthTextField = new JTextField();
+		monthTextField.setBounds(180, 330, 50, 30);
+		JLabel dayLabel = new JLabel("일");
+		dayLabel.setBounds(330, 330, 50, 30);
+		JTextField dayTextField = new JTextField();
+		dayTextField.setBounds(270, 330, 50, 30);
+
+		// TODO 일반상품 추가
+		JButton newProductButton = new JButton("상품추가");
+		newProductButton.setBounds(600, 10, 90, 25);
+		newProductButton.setBackground(Color.WHITE);
+		newProductButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				String name = pNameTextField.getText();
+				String price = pPriceTextField.getText();
+				String num = pNumTextField.getText();
+				String uprice = pUPriceteTextField.getText();
+				String description = pDescriptionTextField.getText();
+				String discount = pDiscountTextField.getText();
+				String yearMonthDay = yearTextField.getText() + monthTextField.getText() + dayTextField.getText();
+
+				// String int int int String int
+				int priceNum = priceNumberFormatException(price);
+				int numNum = numNumberFormatException(num);
+				int upriceNum = uPriceNumberFormatException(uprice, price);
+				int discountNum = discountNumberFormatException(discount);
+
+				if (p == true && up == true && d == true) {
+					ExpirationDate_b s = new ExpirationDate_b(name, priceNum, numNum, upriceNum, description,
+							discountNum, yearMonthDay);
+					user.pos.expirationDate_b.add(s);
+
+					JOptionPane.showMessageDialog(null, "유통기한 상품이 추가되었습니다.");
+					setVisible(false);
+					new Main(user);
+				}
+			}
+		});
+
+		c.add(backButton);
+		c.add(pNameLabel);
+		c.add(pNameTextField);
+		c.add(pPriceLabel);
+		c.add(pPriceTextField);
+		c.add(pNumLabel);
+		c.add(pNumTextField);
+		c.add(puPriceLabel);
+		c.add(pUPriceteTextField);
+		c.add(pDescriptionLabel);
+		c.add(pDescriptionTextField);
+		c.add(pDiscountLabel);
+		c.add(pDiscountTextField);
+		c.add(newProductButton);
+		c.add(expriationLabel);
+		c.add(yearLabel);
+		c.add(yearTextField);
+		c.add(monthLabel);
+		c.add(monthTextField);
+		c.add(dayLabel);
+		c.add(dayTextField);
+
+		setSize(710, 400);
+		setVisible(true);
+	}
+
+	public int priceNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			p = true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "가격은 정수형으로 해주세요 ex)1000");
+			p = false;
+		}
+		return num;
+	}
+
+	public int numNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			n = true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "수량은 정수형으로 해주세요 ex)100");
+			n = false;
+		}
+		return num;
+	}
+
+	public int uPriceNumberFormatException(String text, String text2) {
+		int num = 0;
+		int num2 = 0;
+		try {
+			num = Integer.parseInt(text);
+			num2 = Integer.parseInt(text2);
+
+			if (num > num2) {
+				JOptionPane.showMessageDialog(null, "단가는 가격보다 높을 수 없습니다.");
+				up = false;
+			} else {
+				up = true;
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "단가는 정수형으로 해주세요 ex)1000");
+			up = false;
+		}
+		return num;
+	}
+
+	public int discountNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			if (num < 1 && num > 100) {
+				JOptionPane.showMessageDialog(null, "할인율은 1~100 사이여야 합니다.");
+			} else {
+				d = true;
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "할인율은 정수형으로 해주세요 ex)50");
+			d = false;
+		}
+		return num;
+	}
+
+}
+
+// TODO 일반상품추가 Class
+class ProductAddNormal extends JFrame {
+	// String int int int String int String
+	// TODO 상품추가 정보
+	User user = new User();
+
+	boolean p = false;
+	boolean n = false;
+	boolean up = false;
+	boolean d = false;
+
+	ProductAddNormal(User u) {
+		System.out.println("일반상품 추가 폼");
+
+		user = u;
+		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
+		setTitle("상품 추가");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// 프레임을 화면 중앙에 배치
+		setLocationRelativeTo(null);
+
+		// Main컨테이너 이름을 c로 설정, 배치관리자 삭제, 백그라운드 설정
+		Container c = getContentPane();
+		c.setLayout(null);
+		// 일단 하얀색으로 배경색 설정, 추후 이미지로 바꿀 예정
+		c.setBackground(Color.WHITE);
+
+		// TODO 상품상세정보 이전
+		JButton backButton = new JButton("이전");
+		backButton.setBounds(10, 10, 60, 25);
+		backButton.setBackground(Color.WHITE);
+		backButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				setVisible(false);
+				new ProductsManager_Main(user);
+			}
+		});
+
+		Font font = new Font("이텔릭체", Font.PLAIN, 15);
+
+		JLabel pNameLabel = new JLabel("상품이름");
+		pNameLabel.setBounds(90, 10, 200, 20);
+		pNameLabel.setFont(font);
+		JTextField pNameTextField = new JTextField();
+		pNameTextField.setBounds(90, 30, 400, 30);
+
+		JLabel pPriceLabel = new JLabel("상품가격");
+		pPriceLabel.setBounds(90, 60, 200, 20);
+		pPriceLabel.setFont(font);
+		JTextField pPriceTextField = new JTextField();
+		pPriceTextField.setBounds(90, 80, 400, 30);
+
+		JLabel pNumLabel = new JLabel("상품수량");
+		pNumLabel.setBounds(90, 110, 200, 20);
+		pNumLabel.setFont(font);
+		JTextField pNumTextField = new JTextField();
+		pNumTextField.setBounds(90, 130, 400, 30);
+
+		JLabel puPriceLabel = new JLabel("상품단가");
+		puPriceLabel.setBounds(90, 160, 200, 20);
+		puPriceLabel.setFont(font);
+		JTextField pUPriceteTextField = new JTextField();
+		pUPriceteTextField.setBounds(90, 180, 400, 30);
+
+		JLabel pDescriptionLabel = new JLabel("상품설명");
+		pDescriptionLabel.setBounds(90, 210, 200, 20);
+		pDescriptionLabel.setFont(font);
+		JTextField pDescriptionTextField = new JTextField();
+		pDescriptionTextField.setBounds(90, 230, 400, 30);
+
+		JLabel pDiscountLabel = new JLabel("할인율");
+		pDiscountLabel.setBounds(90, 260, 200, 20);
+		pDiscountLabel.setFont(font);
+		JTextField pDiscountTextField = new JTextField();
+		pDiscountTextField.setBounds(90, 280, 400, 30);
+
+		// TODO 일반상품 추가
+		JButton newProductButton = new JButton("상품추가");
+		newProductButton.setBounds(600, 10, 90, 25);
+		newProductButton.setBackground(Color.WHITE);
+		newProductButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				String name = pNameTextField.getText();
+				String price = pPriceTextField.getText();
+				String num = pNumTextField.getText();
+				String uprice = pUPriceteTextField.getText();
+				String description = pDescriptionTextField.getText();
+				String discount = pDiscountTextField.getText();
+
+				// String int int int String int
+				int priceNum = priceNumberFormatException(price);
+				int numNum = numNumberFormatException(num);
+				int upriceNum = uPriceNumberFormatException(uprice, price);
+				int discountNum = discountNumberFormatException(discount);
+
+				if (p == true && n == true && up == true && d == true) {
+					Product_b s = new Product_b(name, priceNum, numNum, upriceNum, description, discountNum);
+					user.pos.product_b.add(s);
+
+					JOptionPane.showMessageDialog(null, "일반상품이 추가되었습니다.");
+					setVisible(false);
+					new Main(user);
+				}
+			}
+		});
+
+		c.add(backButton);
+		c.add(pNameLabel);
+		c.add(pNameTextField);
+		c.add(pPriceLabel);
+		c.add(pPriceTextField);
+		c.add(pNumLabel);
+		c.add(pNumTextField);
+		c.add(puPriceLabel);
+		c.add(pUPriceteTextField);
+		c.add(pDescriptionLabel);
+		c.add(pDescriptionTextField);
+		c.add(pDiscountLabel);
+		c.add(pDiscountTextField);
+		c.add(newProductButton);
+
+		setSize(710, 400);
+		setVisible(true);
+	}
+
+	public int priceNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			p = true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "가격은 정수형으로 해주세요 ex)1000");
+			p = false;
+		}
+		return num;
+	}
+
+	public int numNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			n = true;
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "수량은 정수형으로 해주세요 ex)100");
+			n = false;
+		}
+		return num;
+	}
+
+	public int uPriceNumberFormatException(String text, String text2) {
+		int num = 0;
+		int num2 = 0;
+		try {
+			num = Integer.parseInt(text);
+			num2 = Integer.parseInt(text2);
+
+			if (num > num2) {
+				JOptionPane.showMessageDialog(null, "단가는 가격보다 높을 수 없습니다.");
+				up = false;
+			} else {
+				up = true;
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "단가는 정수형으로 해주세요 ex)1000");
+			up = false;
+		}
+		return num;
+	}
+
+	public int discountNumberFormatException(String text) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(text);
+			if (num < 1 && num > 100) {
+				JOptionPane.showMessageDialog(null, "할인율은 1~100 사이여야 합니다.");
+			} else {
+				d = true;
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "할인율은 정수형으로 해주세요 ex)50");
+			d = false;
+		}
+		return num;
 	}
 }
 
@@ -630,31 +1223,31 @@ class ProductInformation extends JFrame {
 
 		// TODO 상품상세정보 상품이름
 		JLabel productName = new JLabel();
-		productName.setBounds(10, 50, 200, 20);
+		productName.setBounds(10, 50, 300, 20);
 
 		// TODO 상품상세정보 상품가격
 		JLabel productPrice = new JLabel();
-		productPrice.setBounds(10, 80, 200, 20);
+		productPrice.setBounds(10, 80, 300, 20);
 
 		// TODO 상품상세정보 수량
 		JLabel productNum = new JLabel();
-		productNum.setBounds(10, 110, 200, 20);
+		productNum.setBounds(10, 110, 300, 20);
 
 		// TODO 상품상세정보 단가
 		JLabel productUnitPrice = new JLabel();
-		productUnitPrice.setBounds(10, 140, 200, 20);
+		productUnitPrice.setBounds(10, 140, 300, 20);
 
 		// TODO 상품상세정보 상품설명
 		JLabel productExplan = new JLabel();
-		productExplan.setBounds(10, 170, 200, 20);
+		productExplan.setBounds(10, 170, 300, 20);
 
 		// TODO 상품상세정보 할인율
 		JLabel productDiscount = new JLabel();
-		productDiscount.setBounds(10, 200, 200, 20);
+		productDiscount.setBounds(10, 200, 300, 20);
 
 		// TODO 상품상세정보 유통기한
 		JLabel productExpiationDate = new JLabel();
-		productExpiationDate.setBounds(10, 230, 200, 20);
+		productExpiationDate.setBounds(10, 230, 300, 20);
 
 		// TODO 관리자 전화번호
 		JLabel managerPhoneLabel = new JLabel("관리자 전화번호 : 010-9206-9486");
@@ -738,34 +1331,34 @@ class SeatInformation extends JFrame {
 
 		// TODO 좌석 상품상세정보 상품이름
 		JLabel productName = new JLabel("영화이름 : " + user.pos.seatCheck_b.get(index).getProduct_name());
-		productName.setBounds(10, 50, 200, 20);
+		productName.setBounds(10, 50, 300, 20);
 
 		// TODO 좌석 상품상세정보 상품가격
 		JLabel productPrice = new JLabel(
 				"영화가격 : " + Integer.toString(user.pos.seatCheck_b.get(index).getProduct_price()));
-		productPrice.setBounds(10, 80, 200, 20);
+		productPrice.setBounds(10, 80, 300, 20);
 
 		// TODO 좌석 상품상세정보 수량
 		JLabel productNum = new JLabel("남은 좌석 : " + Integer.toString(user.pos.seatCheck_b.get(index).getProduct_num()));
-		productNum.setBounds(10, 110, 200, 20);
+		productNum.setBounds(10, 110, 300, 20);
 
 		// TODO 좌석 상품상세정보 단가
 		JLabel productUnitPrice = new JLabel(
 				"영화단가 : " + Integer.toString(user.pos.seatCheck_b.get(index).getProduct_Uprice()));
-		productUnitPrice.setBounds(10, 140, 200, 20);
+		productUnitPrice.setBounds(10, 140, 300, 20);
 
 		// TODO 좌석 상품상세정보 상품설명
 		JLabel productExplan = new JLabel("상품설명 : " + user.pos.seatCheck_b.get(index).getProduct_description());
-		productExplan.setBounds(10, 170, 200, 20);
+		productExplan.setBounds(10, 170, 300, 20);
 
 		// TODO 좌석 상품상세정보 할인율
 		JLabel productDiscount = new JLabel(
 				"할인율 : " + Integer.toString(user.pos.seatCheck_b.get(index).getProduct_discount()));
-		productDiscount.setBounds(10, 200, 200, 20);
+		productDiscount.setBounds(10, 200, 300, 20);
 
 		// TODO 좌석 관리자 전화번호
 		JLabel managerPhoneLabel = new JLabel("관리자 전화번호 : 010-9206-9486");
-		managerPhoneLabel.setBounds(510, 340, 200, 20);
+		managerPhoneLabel.setBounds(510, 340, 300, 20);
 
 		c.add(backButton);
 		c.add(productName);
@@ -780,16 +1373,9 @@ class SeatInformation extends JFrame {
 	}
 }
 
-// 일반 상품에 유통기한이 조금 걸리는데 이거는 radiobutton을 이용해서 유통기한이 존재하는 상품이라면 체크하고
-// 체크하면 유통기한을 입력할 수 있는 textField가 뜨도록 만들어도 괜찮을 듯.
-
-// 정보가 날아가면 안되기 때문에 좌석상품, 일반상품 구분없이 모든 정보를 넘겨줘야 하는 건 똑같음
-// 해당 폼에서 알아서 정보처리를 하도록 설정해야함
-
-// 상품 세부내용은 상품을 클릭하면 내 정보처럼 상품의 세세한 정보들이 뜨도록 만들면 될 것 같음.
-// 상품 세부내용 정보 넘겨줄 때 상품의 좌석 index번호도 넘겨줘야함
-
 public class ProductsManager {
 	public static void main(String[] args) {
+		User u = new User();
+		new seatProductAdd(u);
 	}
 }

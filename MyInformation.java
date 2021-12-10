@@ -116,39 +116,39 @@ public class MyInformation extends JFrame {
 
 		// TODO 이름
 		JLabel nameLabel = new JLabel("이름 : " + user.getName());
-		nameLabel.setBounds(10, 50, 200, 20);
+		nameLabel.setBounds(10, 50, 300, 20);
 
 		// TODO 생년월일
 		JLabel birthLabel = new JLabel("생년월일 : " + user.getBirthDate());
-		birthLabel.setBounds(10, 80, 200, 20);
+		birthLabel.setBounds(10, 80, 300, 20);
 
 		// TODO 성별
 		JLabel genderLabel = new JLabel("성별 : " + user.getGender());
-		genderLabel.setBounds(10, 110, 200, 20);
+		genderLabel.setBounds(10, 110, 300, 20);
 
 		// TODO 아이디
 		JLabel idLabel = new JLabel("아이디 : " + user.getId());
-		idLabel.setBounds(10, 140, 200, 20);
+		idLabel.setBounds(10, 140, 300, 20);
 
 		// TODO 비밀번호
 		JLabel pwLabel = new JLabel("비밀번호 : " + user.getPw());
-		pwLabel.setBounds(10, 170, 200, 20);
+		pwLabel.setBounds(10, 170, 300, 20);
 
 		// TODO 비밀번호찾기 질문
 		JLabel findPwQLabel = new JLabel("비밀번호찾기 질문 : " + user.getPwQuestion());
-		findPwQLabel.setBounds(10, 200, 200, 20);
+		findPwQLabel.setBounds(10, 200, 500, 20);
 
 		// TODO 비밀번호찾기 답변
 		JLabel findPwLabel = new JLabel("비밀번호찾기 답변 : " + user.getPwQuestionAnswer());
-		findPwLabel.setBounds(10, 230, 200, 20);
+		findPwLabel.setBounds(10, 230, 500, 20);
 
 		// TODO 전화번호
 		JLabel phoneLabel = new JLabel("전화번호 : " + user.getPhoneNumber());
-		phoneLabel.setBounds(10, 260, 200, 20);
+		phoneLabel.setBounds(10, 260, 300, 20);
 
 		// TODO 이메일
 		JLabel emailLabel = new JLabel("이메일 : " + user.geteMail());
-		emailLabel.setBounds(10, 290, 200, 20);
+		emailLabel.setBounds(10, 290, 300, 20);
 
 		// TODO 관리자 전화번호
 		JLabel managerPhoneLabel = new JLabel("관리자 전화번호 : 010-9206-9486");
