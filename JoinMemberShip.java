@@ -417,6 +417,7 @@ public class JoinMemberShip extends JFrame {
 
         // TODO 회원가입 버튼 추가 설정
         // 회원가입 버튼의 위치와 크기설정 액션 리스너 부착
+        joinMerbership.setBackground(Color.WHITE);
         joinMerbership.setBounds(130, 520, 100, 50);
         joinMerbership.addActionListener(new MyActionListener());
         // 회원가입을 성공적으로 완료했을 때 나타나는 레이블의 위치와 크기 설정, 창은 기본적으로 안보이도록 설정
