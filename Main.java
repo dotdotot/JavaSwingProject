@@ -32,8 +32,8 @@ public class Main extends JFrame {
 		Font welcomeFont = new Font("이텔릭체", Font.PLAIN, 30);
 		JLabel nameLabel = new JLabel(user.getName() + "님 안녕하세요!");
 		nameLabel.setFont(welcomeFont);
-		nameLabel.setBounds(50, 10, 200, 50);
-		JLabel SameDaySaleLabel = new JLabel("당일 매출 : 15,000,000");
+		nameLabel.setBounds(50, 10, 500, 50);
+		JLabel SameDaySaleLabel = new JLabel("당일 매출 : " + user.pos.report_b.day());
 		SameDaySaleLabel.setBounds(50, 60, 200, 50);
 
 		// TODO 로그아웃
