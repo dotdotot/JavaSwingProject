@@ -20,7 +20,7 @@ public class Report_b extends ProductPurchaseList_b {
 
 
     // TODO 당일 매출과 이익 문자열 반환
-    String day() {
+    public String day() {
         // 반환 형식 ex) 9200,6700 9200은 매출이고 6700원은 순이익 입니다.
         // 구분자는 . 입니다.
         for (int a = 0; a < purchaseList.size(); a++) {
@@ -42,7 +42,7 @@ public class Report_b extends ProductPurchaseList_b {
     }
 
     // TODO 월 매출과 이익 반환
-    String month() {
+    public String month() {
         // 반환 형식 9200,6700 9200은 매출이고 6700원은 순이익 입니다. 구분자는 , 입니다.
         for (int a = 0; a < purchaseList.size(); a++) {
             String[] strArr = purchaseList.get(a).split("\\.");
@@ -63,7 +63,7 @@ public class Report_b extends ProductPurchaseList_b {
     }
 
     // TODO 연 매출과 이익을 문자열로 반환
-    String year() {
+    public String year() {
         // 반환 형식 9200,6700 9200은 매출이고 6700원은 순이익 입니다. 구분자는 , 입니다.
         for (int a = 0; a < purchaseList.size(); a++) {
             String[] strArr = purchaseList.get(a).split("\\.");

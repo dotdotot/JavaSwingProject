@@ -341,7 +341,7 @@ class SeatProduct extends JFrame {
 		seat_1_Button.setBackground(Color.WHITE);
 		seat_1_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 0;
+				int index = 1;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(1) == false) {
 
 				} else {
@@ -360,7 +360,7 @@ class SeatProduct extends JFrame {
 		seat_2_Button.setBackground(Color.WHITE);
 		seat_2_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 1;
+				int index = 2;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(2) == false) {
 
 				} else {
@@ -379,7 +379,7 @@ class SeatProduct extends JFrame {
 		seat_3_Button.setBackground(Color.WHITE);
 		seat_3_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 2;
+				int index = 3;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(3) == false) {
 
 				} else {
@@ -398,7 +398,7 @@ class SeatProduct extends JFrame {
 		seat_4_Button.setBackground(Color.WHITE);
 		seat_4_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 3;
+				int index = 4;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(4) == false) {
 
 				} else {
@@ -417,7 +417,7 @@ class SeatProduct extends JFrame {
 		seat_5_Button.setBackground(Color.WHITE);
 		seat_5_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 4;
+				int index = 5;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(5) == false) {
 
 				} else {
@@ -436,7 +436,7 @@ class SeatProduct extends JFrame {
 		seat_6_Button.setBackground(Color.WHITE);
 		seat_6_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 5;
+				int index = 6;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(6) == false) {
 
 				} else {
@@ -455,7 +455,7 @@ class SeatProduct extends JFrame {
 		seat_7_Button.setBackground(Color.WHITE);
 		seat_7_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 6;
+				int index = 7;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(7) == false) {
 
 				} else {
@@ -474,7 +474,7 @@ class SeatProduct extends JFrame {
 		seat_8_Button.setBackground(Color.WHITE);
 		seat_8_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 7;
+				int index = 8;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(8) == false) {
 
 				} else {
@@ -493,7 +493,7 @@ class SeatProduct extends JFrame {
 		seat_9_Button.setBackground(Color.WHITE);
 		seat_9_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 8;
+				int index = 9;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(9) == false) {
 
 				} else {
@@ -512,7 +512,7 @@ class SeatProduct extends JFrame {
 		seat_10_Button.setBackground(Color.WHITE);
 		seat_10_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 9;
+				int index = 10;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(10) == false) {
 
 				} else {
@@ -531,7 +531,7 @@ class SeatProduct extends JFrame {
 		seat_11_Button.setBackground(Color.WHITE);
 		seat_11_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 10;
+				int index = 11;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(11) == false) {
 
 				} else {
@@ -550,7 +550,7 @@ class SeatProduct extends JFrame {
 		seat_12_Button.setBackground(Color.WHITE);
 		seat_12_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 11;
+				int index = 12;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(12) == false) {
 
 				} else {
@@ -569,7 +569,7 @@ class SeatProduct extends JFrame {
 		seat_13_Button.setBackground(Color.WHITE);
 		seat_13_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 12;
+				int index = 13;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(13) == false) {
 
 				} else {
@@ -588,7 +588,7 @@ class SeatProduct extends JFrame {
 		seat_14_Button.setBackground(Color.WHITE);
 		seat_14_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 13;
+				int index = 14;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(14) == false) {
 
 				} else {
@@ -607,7 +607,7 @@ class SeatProduct extends JFrame {
 		seat_15_Button.setBackground(Color.WHITE);
 		seat_15_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 14;
+				int index = 15;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(15) == false) {
 
 				} else {
@@ -626,7 +626,7 @@ class SeatProduct extends JFrame {
 		seat_16_Button.setBackground(Color.WHITE);
 		seat_16_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 15;
+				int index = 16;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(16) == false) {
 
 				} else {
@@ -645,7 +645,7 @@ class SeatProduct extends JFrame {
 		seat_17_Button.setBackground(Color.WHITE);
 		seat_17_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 16;
+				int index = 17;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(17) == false) {
 
 				} else {
@@ -664,7 +664,7 @@ class SeatProduct extends JFrame {
 		seat_18_Button.setBackground(Color.WHITE);
 		seat_18_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 17;
+				int index = 18;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(18) == false) {
 
 				} else {
@@ -683,7 +683,7 @@ class SeatProduct extends JFrame {
 		seat_19_Button.setBackground(Color.WHITE);
 		seat_19_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 18;
+				int index = 19;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(19) == false) {
 
 				} else {
@@ -702,7 +702,7 @@ class SeatProduct extends JFrame {
 		seat_20_Button.setBackground(Color.WHITE);
 		seat_20_Button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				int index = 19;
+				int index = 20;
 				if (user.pos.seatCheck_b.get(seatIndex).getSeetc(20) == false) {
 
 				} else {
@@ -1232,7 +1232,7 @@ class CalculationSeatPay extends JFrame {
 				a = i;
 			}
 		}
-		user.pos.seatCheck_b.get(a).setSeetc(index + 1);
+		user.pos.seatCheck_b.get(a).setSeetc(index);
 		System.out.println("boolean 성공적으로 변경");
 	}
 }
