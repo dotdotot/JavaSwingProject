@@ -48,16 +48,20 @@ public class YearReport extends JFrame {
 		JLabel monthLabel = new JLabel(year + "년 보고서");
 		monthLabel.setBounds(30, 100, 80, 20);
 
+		// 총 매출과 순수익 자르기
+		String t = user.pos.report_b.year();
+		String []tArr = t.split(",");
+
 		// TODO 총 매출
 		JLabel allSalesTextLabel = new JLabel("총 매출 : ");
 		allSalesTextLabel.setBounds(30, 130, 80, 20);
-		JLabel allSalesLabel = new JLabel("100,000,000");
+		JLabel allSalesLabel = new JLabel(tArr[0] + "원");
 		allSalesLabel.setBounds(80, 130, 80, 20);
 
 		// TODO 순수익
 		JLabel netProfitTextLabel = new JLabel("순수익  : ");
 		netProfitTextLabel.setBounds(30, 160, 100, 20);
-		JLabel netProfitLabel = new JLabel("30,000,000");
+		JLabel netProfitLabel = new JLabel(tArr[1] + "원");
 		netProfitLabel.setBounds(80, 160, 300, 20);
 
 		c.add(backButton);

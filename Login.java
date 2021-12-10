@@ -30,11 +30,10 @@ public class Login extends JFrame {
 
 		// 영화 데모데이터 추가
 		user.pos.productSeatPlus("라스트 나잇 인 소호", 8000, 5000, "패션 디자이너의 꿈을 가지고 상경한 한 소녀!", 0);
-		user.pos.productSeatPlus("연애 빠진 로맨스", 8000, 5000, "스물아홉 지영!", 10);
+		user.pos.productSeatPlus("연애 빠진 로맨스", 8000, 5000, "???!", 10);
 
 		userList.add(user);
 
-		//System.out.println(user.pos.product_b.size() + " " + user.pos.expirationDate_b.size() + " " + user.pos.seatCheck_b.size());
 		// 프레임 제목, 메인 프레임 종료시 이벤트 프레임도 종료하도록 설정
 		setTitle("로그인");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +60,7 @@ public class Login extends JFrame {
 		JLabel text3 = new JLabel("incididunt ut labore et dolore magna aliqua.");
 		text3.setBounds(50, 160, 300, 20);
 		text3.setFont(textFont);
-
+		// 인사 색깔 설정
 		welcome.setForeground(Color.WHITE);
 		text1.setForeground(Color.WHITE);
 		text2.setForeground(Color.WHITE);
@@ -234,19 +233,18 @@ public class Login extends JFrame {
 		super.add(background);
 	}
 
-	public void save(){
-		SaveImport save = new SaveImport();
-		save.userSave(userList);
-	}
-	public void load(){
+	// public void save(){
+	// 	SaveImport save = new SaveImport();
+	// 	save.userSave(userList);
+	// }
+
+	// public void load(){
 		// SaveImport s = new SaveImport();
 		// userList = s.userImport(userList);
-	}
-	// 이미지에따라 글짜 색 바뀌는거 추가해야함
+	// }
 
 	public static void main(String[] args) {
 		User user =new User();
-		
 		new Login(user);
 	}
 
