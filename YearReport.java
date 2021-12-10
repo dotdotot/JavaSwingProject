@@ -13,6 +13,7 @@ public class YearReport extends JFrame {
 	// TODO 정보
 	User user = new User();
 	YearReport(User u) {
+		System.out.println("월별 보고서 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("월별 보고서");

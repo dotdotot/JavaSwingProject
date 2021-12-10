@@ -11,6 +11,7 @@ class CalculationMain extends JFrame {
 	User user = new User();
 
 	CalculationMain(User u) {
+		System.out.println("상품 선택 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("계산");
@@ -77,6 +78,7 @@ class SeatProductAll extends JFrame {
 	int visibleButtonIndex = 0;
 
 	public SeatProductAll(User u) {
+		System.out.println("좌석상품 선택 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("좌석상품");
@@ -297,6 +299,8 @@ class SeatProduct extends JFrame {
 	int seatIndex;
 
 	public SeatProduct(User u, String productNamePrice) {
+		System.out.println("좌석 폼");
+
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("좌석상품");
@@ -760,6 +764,7 @@ class NormalProduct extends JFrame {
 	int visibleButtonIndex = 0;
 
 	public NormalProduct(User u) {
+		System.out.println("일반 상품 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("일반상품");
@@ -984,10 +989,12 @@ class ProductBuyNum extends JFrame {
 	boolean expirationProduct;
 	String t;
 	ProductBuyNum(User u, String text) {
+		System.out.println("일반상품 구매수량 폼");
+
 		t= text;
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
-		setTitle("일반상품");
+		setTitle("일반상품 구매수량");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 프레임을 화면 중앙에 배치
@@ -1242,6 +1249,7 @@ class CalculationPay extends JFrame {
 	User user = new User();
 
 	public CalculationPay(User u,String productNamePrice, int index) {
+		System.out.println("계산 방법 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("결제");
@@ -1303,6 +1311,7 @@ class CalculationReceiptCard extends JFrame {
 	User user = new User();
 
 	CalculationReceiptCard(User u,String productNamePrice,int index) {
+		System.out.println("카드 결제 폼");
 		user = u;
 
 		
@@ -1509,6 +1518,8 @@ class CalculationReceiptCash extends JFrame {
 	User user = new User();
 
 	CalculationReceiptCash(User u,String productNamePrice,int index) {
+		System.out.println("현금 결제 폼");
+
 		user = u;
 		System.out.println("현금 영수증 폼입니다.");
 		System.out.println(productNamePrice + " " + index);
@@ -1710,7 +1721,5 @@ class CalculationReceiptCash extends JFrame {
 
 public class Calculation {
 	public static void main(String[] args) {
-		User u = new User();
-		new ProductBuyNum(u, "ㅇㅇ");
 	}
 }

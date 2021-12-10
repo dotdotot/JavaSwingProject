@@ -9,6 +9,7 @@ public class FindPw extends JFrame {
 	public static ArrayList<User> userList = new ArrayList<User>();
 
 	public FindPw(ArrayList<User> user) {
+		System.out.println("비밀번호 찾기 폼");
 		userList = user;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("비밀번호 찾기");

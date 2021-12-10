@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class JoinMemberShip extends JFrame {
     public static ArrayList<User> userList = new ArrayList<User>();
-
     // TODO 아이디
     // 아이디를 표시하는 레이블, 아이디를 입력받는 텍스트필드
     // 아이디를 성공적으로 입력했을 때 나타내는 레이블
@@ -78,6 +77,7 @@ public class JoinMemberShip extends JFrame {
     JLabel joinMerbershipText = new JLabel("성공");
 
     public JoinMemberShip(ArrayList<User> user) {
+        System.out.println("회원가입 폼");
         userList = user;
         // 제목 설정, 메인 스레드 종료시 이벤트 스레드 종료하도록 설정
         setTitle("회원가입");

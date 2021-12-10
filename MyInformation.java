@@ -88,6 +88,7 @@ public class MyInformation extends JFrame {
 	}
 
 	public MyInformation(User u) {
+		System.out.println("내 정보 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("내 정보");

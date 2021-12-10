@@ -15,6 +15,7 @@ public class Login extends JFrame {
 			
 	// TODO Login
 	Login(User u) {
+		System.out.println("로그인 폼");
 		// 상품 데모데이터 추가
 		user.pos.productPlus("홈런볼", 1500, 100, 1000, "홈런볼과자", 0, "20220108");
 		user.pos.productPlus("썬칩", 1800, 150, 800, "바삭바삭한 과자", 5, "20220307");

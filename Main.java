@@ -33,8 +33,16 @@ public class Main extends JFrame {
 		JLabel nameLabel = new JLabel(user.getName() + "님 안녕하세요!");
 		nameLabel.setFont(welcomeFont);
 		nameLabel.setBounds(50, 10, 500, 50);
-		JLabel SameDaySaleLabel = new JLabel("당일 매출 : " + user.pos.report_b.day());
-		SameDaySaleLabel.setBounds(50, 60, 200, 50);
+
+		// TODO 매출
+		String salesAndProfit = user.pos.report_b.day();
+		String [] slaeAndProfitArr = salesAndProfit.split(",");
+		JLabel saleLabel = new JLabel("당일 매출 : " + slaeAndProfitArr[0]);
+		saleLabel.setBounds(50, 60, 200, 50);
+
+		// TODO 순이익
+		JLabel profitLabel = new JLabel("당일 순이익 : " + slaeAndProfitArr[1]);
+		profitLabel.setBounds(50, 90, 200, 50);
 
 		// TODO 로그아웃
 		JButton logoutButton = new JButton("로그아웃");
@@ -123,7 +131,8 @@ public class Main extends JFrame {
 		c.add(managerPhoneLabel);
 
 		c.add(nameLabel);
-		c.add(SameDaySaleLabel);
+		c.add(saleLabel);
+		c.add(profitLabel);
 		c.add(logoutButton);
 		c.add(myInformationButton);
 		c.add(RefundButton);

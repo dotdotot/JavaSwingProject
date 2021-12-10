@@ -8,6 +8,7 @@ class ProductsManager_Main extends JFrame {
 	User user = new User();
 
 	ProductsManager_Main(User u) {
+		System.out.println("물품 관리 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("물품 관리");
@@ -74,7 +75,7 @@ class SeatProductManager extends JFrame {
 	int visibleButtonIndex = 0;
 
 	public SeatProductManager(User u) {
-		System.out.println("좌석상품Class");
+		System.out.println("좌석상품 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("좌석상품");
@@ -310,6 +311,7 @@ class NormalProductManager extends JFrame {
 	int visibleButtonIndex = 0;
 
 	public NormalProductManager(User u) {
+		System.out.println("일반상품 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
 		setTitle("일반상품");
@@ -542,9 +544,11 @@ class ProductAdd extends JFrame {
 	User user = new User();
 
 	ProductAdd(User u) {
+		System.out.println("상품 추가 폼");
+
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
-		setTitle("일반상품");
+		setTitle("상품 추가");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 프레임을 화면 중앙에 배치
@@ -556,6 +560,19 @@ class ProductAdd extends JFrame {
 		// 일단 하얀색으로 배경색 설정, 추후 이미지로 바꿀 예정
 		c.setBackground(Color.WHITE);
 
+		// TODO 상품상세정보 이전
+		JButton backButton = new JButton("이전");
+		backButton.setBounds(10, 10, 60, 25);
+		backButton.setBackground(Color.WHITE);
+		backButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				setVisible(false);
+				new ProductsManager_Main(user);
+			}
+		});
+
+		setSize(710,400);
+		setVisible(true);
 	}
 }
 
@@ -565,10 +582,10 @@ class ProductInformation extends JFrame {
 	User user = new User();
 
 	ProductInformation(User u, String productNamePrice) {
-		System.out.println(productNamePrice);
+		System.out.println("일반상품 상세정보 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
-		setTitle("일반상품");
+		setTitle("일반상품 상세정보");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 프레임을 화면 중앙에 배치
@@ -685,9 +702,10 @@ class SeatInformation extends JFrame {
 	User user = new User();
 
 	SeatInformation(User u, String productNamePrice) {
+		System.out.println("좌석상품 상세정보 폼");
 		user = u;
 		// 제목 설정, 메인 스레드 종료시 이벤트 스레드도 종료하도록 설정
-		setTitle("일반상품");
+		setTitle("좌석상품 상세정보");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 프레임을 화면 중앙에 배치
@@ -773,7 +791,5 @@ class SeatInformation extends JFrame {
 
 public class ProductsManager {
 	public static void main(String[] args) {
-		User user = new User();
-		new ProductsManager_Main(user);
 	}
 }
