@@ -10,6 +10,7 @@ public class Product_b {
     private String product_description; // 상품설명
     private int product_discount; // 할인율
 
+
     // TODO 매개변수 생성자
     public Product_b(String name, int price, int pnum, int uprice, String description, int discount) { // 생성자 입니다.
         product_name = name;

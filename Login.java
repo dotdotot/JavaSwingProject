@@ -31,7 +31,6 @@ public class Login extends JFrame {
 		// 영화 데모데이터 추가
 		user.pos.productSeatPlus("라스트 나잇 인 소호", 8000, 5000, "패션 디자이너의 꿈을 가지고 상경한 한 소녀!", 0);
 		user.pos.productSeatPlus("연애 빠진 로맨스", 8000, 5000, "스물아홉 지영!", 10);
-		user.pos.productSeatPlus("82년생 김지영", 8000, 5000, "페미 ^^ㅣ발년들", 0);
 
 		userList.add(user);
 
@@ -128,8 +127,7 @@ public class Login extends JFrame {
 		});
 
 		// TODO 아이디 찾기
-		RoundedButton findIdButton = new RoundedButton("아이디 찾기");
-		// JButton findIdButton = new JButton("아이디 찾기");
+		RoundedButton findIdButton = new RoundedButton("아이디 찾기");;
 		findIdButton.setBounds(50, 290, 250, 40);
 		findIdButton.setBackground(Color.WHITE);
 		findIdButton.addMouseListener(new MouseAdapter() {
@@ -141,7 +139,6 @@ public class Login extends JFrame {
 
 		// TODO 비밀번호 찾기
 		RoundedButton findpwButton = new RoundedButton("비밀번호 찾기");
-		// JButton findpwButton = new JButton("비밀번호 찾기");
 		findpwButton.setBounds(410, 290, 250, 40);
 		findpwButton.setBackground(Color.WHITE);
 		findpwButton.addMouseListener(new MouseAdapter() {
@@ -167,7 +164,6 @@ public class Login extends JFrame {
 
 		// TODO 사이즈설정 및 프레임 설정 변경
 		setSize(710, 400);
-		// setUndecorated(true); // 제목 삭제
 		setResizable(false); // 크기 변경 불가능하도록 함
 		setVisible(true); // 창 표시
 

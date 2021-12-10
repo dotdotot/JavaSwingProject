@@ -37,11 +37,11 @@ public class Main extends JFrame {
 		// TODO 매출
 		String salesAndProfit = user.pos.report_b.day();
 		String [] slaeAndProfitArr = salesAndProfit.split(",");
-		JLabel saleLabel = new JLabel("당일 매출 : " + slaeAndProfitArr[0]);
+		JLabel saleLabel = new JLabel("당일 매출 : " + slaeAndProfitArr[0] + "원");
 		saleLabel.setBounds(50, 60, 200, 50);
 
 		// TODO 순이익
-		JLabel profitLabel = new JLabel("당일 순이익 : " + slaeAndProfitArr[1]);
+		JLabel profitLabel = new JLabel("당일 순이익 : " + slaeAndProfitArr[1] + "원");
 		profitLabel.setBounds(50, 90, 200, 50);
 
 		// TODO 로그아웃

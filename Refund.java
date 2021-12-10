@@ -55,7 +55,7 @@ class Refund_Main extends JFrame {
 				// 환불 실패
 				else {
 					// 환불 실패 
-					JOptionPane.showMessageDialog(null, "환불번호가 틀렸습니다.");
+					JOptionPane.showMessageDialog(null, "환불번호가 틀렸거나 삭제된 상품입니다.");
 				}
 			}
 		});
