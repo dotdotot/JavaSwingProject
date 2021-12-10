@@ -30,6 +30,7 @@ class CalculationMain extends JFrame {
 		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
+		// 이전버튼을 누르면 그 전 화면으로 돌아가도록 이벤트 부착
 		backButton.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				setVisible(false);
@@ -41,6 +42,7 @@ class CalculationMain extends JFrame {
 		JButton seatButton = new JButton("좌석 상품");
 		seatButton.setBounds(40, 50, 150, 80);
 		seatButton.setBackground(Color.WHITE);
+		// 버튼을 누르면 좌석 상품으로 가도록 이벤트 부착
 		seatButton.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				setVisible(false);
@@ -52,6 +54,7 @@ class CalculationMain extends JFrame {
 		JButton normalButton = new JButton("일반 상품");
 		normalButton.setBounds(200, 50, 150, 80);
 		normalButton.setBackground(Color.WHITE);
+		// 버튼을 누르면 일반 상품으로 가도록 이벤트 부착
 		normalButton.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				setVisible(false);
@@ -340,6 +343,7 @@ class SeatProduct extends JFrame {
 		}
 
 		// TODO 좌석Class 좌석(1~20)
+		// 각각의 좌석 버튼이 user에 접근해서 자신에 해당하는 배열이 fasel상태라면 색깔변경하고 버튼선택못하도록 변경
 		JButton seat_1_Button = new JButton("1");
 		seat_1_Button.setBounds(85, 250, 80, 40);
 		seat_1_Button.setBackground(Color.WHITE);
