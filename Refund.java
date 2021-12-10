@@ -36,7 +36,7 @@ class Refund_Main extends JFrame {
 			}
 		});
 
-		// TODO 환불 d
+		// TODO 환불 
 		JButton refundButton = new JButton("환불");
 		refundButton.setBackground(Color.WHITE);
 		refundButton.setBounds(320, 10, 60, 30);
