@@ -14,6 +14,10 @@ public class ProductPurchaseList_b {
         // 주문번호를 넣으면 해당하는 주문내역을 반환하는 메소드입니다. 만약 주문번호와 일치하는 주문내역이 없으면 "주문번호와 일치하는 내역이
         // 없습니다"를 반환합니다. 주문내역이 존재한다면"20211111234430.삼다수.1200.1.500" 형식의 문자열을 반환합니다.
         String purchase = "";
+        if(purchaseList.size() == 0){
+            purchase = "주문번호와 일치하는 내역이 없습니다";
+        }
+
         for (int a = 0; a < purchaseList.size(); a++) {
             String[] strArr = purchaseList.get(a).split("\\.");
             if ((strArr[0]).equals(orderNumber)) {
@@ -21,9 +25,9 @@ public class ProductPurchaseList_b {
                 break;
             } else {
                 purchase = "주문번호와 일치하는 내역이 없습니다";
-
             }
         }
+        System.out.println(purchase);
         return purchase;
     }
 

@@ -121,6 +121,7 @@ public class MoviePos_b {
         String[] number;
         // 해당 주문번호가 존재하는지를 확인합니다.
         String report = report_b.getPurchaseList(orderNumber);
+
         if (report.equals("주문번호와 일치하는 내역이 없습니다")) {
             a = false;
         } else {

@@ -31,7 +31,7 @@ public class Login extends JFrame {
 		// 영화 데모데이터 추가
 		user.pos.productSeatPlus("라스트 나잇 인 소호", 8000, 5000, "패션 디자이너의 꿈을 가지고 상경한 한 소녀!", 0);
 		user.pos.productSeatPlus("연애 빠진 로맨스", 8000, 5000, "스물아홉 지영!", 10);
-		user.pos.productSeatPlus("ddddd", 8000, 5000, "패션 디자이너의 꿈을 가지고 상경한 한 소녀!", 0);
+		user.pos.productSeatPlus("82년생 김지영", 8000, 5000, "페미 ^^ㅣ발년들", 0);
 
 		userList.add(user);
 
