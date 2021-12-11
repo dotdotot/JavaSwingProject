@@ -1,4 +1,6 @@
 import posProject.*;
+
+// TODO 유저 정보Class
 public class User {
 	// 아이디,비밀번호,이름,성별,생년월일,전화번호,주소,이메일,비밀번호찾기 질문, 비밀번호찾기 답변
 	private String id;
