@@ -440,6 +440,8 @@ class NormalProductManager extends JFrame {
 	// TODO 일반상품 productPanel()
 	public int productPanel() {
 		String productText = "";
+
+		// 일반상품 모두 하나의 String에 담음
 		for (int i = 0; i < user.pos.expirationDate_b.size(); i++) {
 			productText += user.pos.expirationDate_b.get(i).getProduct_name() + "  "
 					+ user.pos.expirationDate_b.get(i).getProduct_price() + "원/";
@@ -449,6 +451,7 @@ class NormalProductManager extends JFrame {
 					+ user.pos.product_b.get(i).getProduct_price() + "원/";
 		}
 
+		// 위 코드에서 가지고있는 String 변수를 /를 구분자로 잘라 배열에 저장
 		String productArr[] = productText.split("/");
 		System.out.println("상품의 총 개수 : " + productArr.length);
 
