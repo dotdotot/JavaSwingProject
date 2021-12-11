@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.text.*;
 
-// TODO 영화class
+// TODO 영화class (MoviePos)
 public class MoviePos_b {
     // 영화 포스기에 필요한 대부분의 기능을 구현합니다.
     public List<Product_b> product_b = new ArrayList<Product_b>();
