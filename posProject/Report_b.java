@@ -3,7 +3,7 @@ package posProject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// TODO 보고서Class
+// TODO 보고서Class (MoviePos)
 public class Report_b extends ProductPurchaseList_b {
     // 일, 월, 년, 순이익을 계산하는 클래스 입니다.
     public SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
