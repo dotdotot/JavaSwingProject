@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 
+// TODO 회원가입Class
 public class JoinMemberShip extends JFrame {
     public static ArrayList<User> userList = new ArrayList<User>();
     // TODO 아이디
