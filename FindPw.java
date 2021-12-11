@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
+// TODO 비밀번호찾기Class
 public class FindPw extends JFrame {
     // TODO 정보
 	public static ArrayList<User> userList = new ArrayList<User>();
