@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+// TODO 로그인Class
 public class Login extends JFrame {
 	// TODO 정보
 	public static ArrayList<User> userList = new ArrayList<User>();
