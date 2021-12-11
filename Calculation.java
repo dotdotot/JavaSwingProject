@@ -234,6 +234,7 @@ class SeatProductAll extends JFrame {
 			}
 		}
 
+		// 0번 index에 해당하는 panel만 보여지도록 설정
 		panelList.get(0).setVisible(true);
 		return productArr.length;
 	}
