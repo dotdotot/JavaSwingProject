@@ -1,5 +1,6 @@
 package posProject;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 // TODO 구매내역Class
@@ -66,4 +67,38 @@ public class ProductPurchaseList_b {
         return endp;
     }
 
+    // TODO 월 주문내역 반환
+    public String monthList(){
+        String text = "";
+
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("MM");
+        String day = format.format(date);
+
+        for(int i =0; i< purchaseList.size();i++){
+            String str = purchaseList.get(i).substring(4,6);
+            if(day.equals(str)){
+                text += purchaseList.get(i) + "/";
+            }
+        }
+
+        return text;
+    }
+    // TODO 년 주문내역 반환
+    public String yearList(){
+        String text = "";
+
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy");
+        String day = format.format(date);
+
+        for(int i =0; i< purchaseList.size();i++){
+            String str = purchaseList.get(i).substring(0,4);
+            if(day.equals(str)){
+                text += purchaseList.get(i) + "/";
+            }
+        }
+
+        return text;
+    }
 }

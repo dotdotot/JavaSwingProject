@@ -8,6 +8,7 @@ import posProject.SeatCheck_b;
 
 import java.util.*;
 
+// TODO 상품선택Class
 class ProductsManager_Main extends JFrame {
 	// TODO 정보
 	User user = new User();
@@ -380,7 +381,7 @@ class NormalProductManager extends JFrame {
 		Font productFont = new Font("이텔릭체", Font.PLAIN, 30);
 		JLabel ProdcutListTextLabel = new JLabel("상품 목록");
 		ProdcutListTextLabel.setFont(productFont);
-		ProdcutListTextLabel.setBounds(280, 10, 150, 30);
+		ProdcutListTextLabel.setBounds(265, 10, 150, 30);
 
 		// TODO 일반상품 상품페이지
 		JLabel productPageLabel = new JLabel("1page | " + String.valueOf(panelList.size()) + "page");
@@ -543,7 +544,7 @@ class NormalProductManager extends JFrame {
 	}
 }
 
-// TODO 좌석상품추가cLASS
+// TODO 좌석상품추가Class
 class seatProductAdd extends JFrame {
 	// TODO 상품추가 정보
 	User user = new User();
@@ -706,7 +707,7 @@ class seatProductAdd extends JFrame {
 	}
 }
 
-// TODO 상품 추가 선택 폼
+// TODO 상품 추가 선택 폼Class
 class ProductAddChoice extends JFrame {
 	User user = new User();
 
@@ -1174,6 +1175,7 @@ class ProductInformation extends JFrame {
 	// TODO 상품상세정보 정보
 	User user = new User();
 
+	int index;
 	ProductInformation(User u, String productNamePrice) {
 		System.out.println("일반상품 상세정보 폼");
 		user = u;
@@ -1201,7 +1203,6 @@ class ProductInformation extends JFrame {
 			}
 		});
 
-		int index = 0;
 		boolean expirationProduct = false;
 		for (int i = 0; i < user.pos.expirationDate_b.size(); i++) {
 			if (productNamePrice.equals(user.pos.expirationDate_b.get(i).getProduct_name() + "  "
@@ -1253,6 +1254,11 @@ class ProductInformation extends JFrame {
 		JLabel managerPhoneLabel = new JLabel("관리자 전화번호 : 010-9206-9486");
 		managerPhoneLabel.setBounds(510, 340, 200, 20);
 
+		// TODO 상품 삭제버튼
+		JButton deleteProductButton = new JButton("상품삭제");
+		deleteProductButton.setBounds(600, 10, 90, 25);
+		deleteProductButton.setBackground(Color.WHITE);
+
 		// 유통기한 상품
 		if (expirationProduct == true) {
 			productName.setText("상품이름 : " + user.pos.expirationDate_b.get(index).getProduct_name());
@@ -1264,6 +1270,15 @@ class ProductInformation extends JFrame {
 			productDiscount
 					.setText("할인율 : " + Integer.toString(user.pos.expirationDate_b.get(index).getProduct_discount()));
 			productExpiationDate.setText("유통기한 : " + user.pos.expirationDate_b.get(index).getExDate());
+
+			deleteProductButton.addMouseListener(new MouseAdapter(){
+				public void mousePressed(MouseEvent e){
+					user.pos.expirationDate_b.remove(index);
+					JOptionPane.showMessageDialog(null, "유통기한 상품을 삭제했습니다.");
+					setVisible(false);
+					new Main(user);
+				}
+			});
 		}
 		// 유통기한 없는 상품
 		else {
@@ -1273,6 +1288,15 @@ class ProductInformation extends JFrame {
 			productUnitPrice.setText("상품단가 : " + Integer.toString(user.pos.product_b.get(index).getProduct_Uprice()));
 			productExplan.setText("상품설명 : " + user.pos.product_b.get(index).getProduct_description());
 			productDiscount.setText("할인율 : " + Integer.toString(user.pos.product_b.get(index).getProduct_discount()));
+
+			deleteProductButton.addMouseListener(new MouseAdapter(){
+				public void mousePressed(MouseEvent e){
+					user.pos.product_b.remove(index);
+					JOptionPane.showMessageDialog(null, "유통기한 없는 상품을 삭제했습니다.");
+					setVisible(false);
+					new Main(user);
+				}
+			});
 		}
 
 		c.add(backButton);
@@ -1283,6 +1307,7 @@ class ProductInformation extends JFrame {
 		c.add(productExplan);
 		c.add(productDiscount);
 		c.add(productExpiationDate);
+		c.add(deleteProductButton);
 
 		setSize(710, 400);
 		setVisible(true);
@@ -1293,6 +1318,8 @@ class ProductInformation extends JFrame {
 class SeatInformation extends JFrame {
 	// TODO 좌석 상품상세정보 정보
 	User user = new User();
+
+	int index;
 
 	SeatInformation(User u, String productNamePrice) {
 		System.out.println("좌석상품 상세정보 폼");
@@ -1320,7 +1347,7 @@ class SeatInformation extends JFrame {
 				new ProductsManager_Main(user);
 			}
 		});
-		int index = 0;
+
 		for (int i = 0; i < user.pos.seatCheck_b.size(); i++) {
 			if (productNamePrice.equals(user.pos.seatCheck_b.get(i).getProduct_name() + "  "
 					+ user.pos.seatCheck_b.get(i).getProduct_price() + "원")) {
@@ -1360,6 +1387,19 @@ class SeatInformation extends JFrame {
 		JLabel managerPhoneLabel = new JLabel("관리자 전화번호 : 010-9206-9486");
 		managerPhoneLabel.setBounds(510, 340, 300, 20);
 
+		// TODO 좌석상품 삭제버튼
+		JButton deleteProductButton = new JButton("상품삭제");
+		deleteProductButton.setBounds(600, 10, 90, 25);
+		deleteProductButton.setBackground(Color.WHITE);
+		deleteProductButton.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				user.pos.seatCheck_b.remove(index);
+				JOptionPane.showMessageDialog(null, "좌석 상품을 삭제했습니다.");
+				setVisible(false);
+				new Main(user);
+			}
+		});
+
 		c.add(backButton);
 		c.add(productName);
 		c.add(productPrice);
@@ -1367,6 +1407,7 @@ class SeatInformation extends JFrame {
 		c.add(productUnitPrice);
 		c.add(productExplan);
 		c.add(productDiscount);
+		c.add(deleteProductButton);
 
 		setSize(710, 400);
 		setVisible(true);

@@ -68,11 +68,7 @@ public class FindPw extends JFrame {
 				String id = idTextField.getText();
 				String name = nameTextField.getText();
 				String phone = phoneTextField.getText();
-
-//				System.out.println(id + " " + name + " " + phone);
-//				System.out.println(userList.get(0).getId() + " " + userList.get(0).getName() + " "
-//						+ userList.get(0).getPhoneNumber());
-
+				
 				boolean check = false;
 				for (int i = 0; i < userList.size(); i++) {
 					if (userList.get(i).getId().equals(id)) {
