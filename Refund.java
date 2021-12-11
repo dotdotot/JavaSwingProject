@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-// TODO 환불
+// TODO 환불Class
 class Refund_Main extends JFrame {
 	//TODO 정보
 	User user = new User();
