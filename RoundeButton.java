@@ -90,6 +90,7 @@ class RoundedButton extends JButton {
 	}
 }
 
+// TODO 710 x 400 폼 전용 버튼
 class form_710_400_Button extends JButton {
 	public form_710_400_Button() {
 		super();
@@ -169,7 +170,7 @@ class form_710_400_Button extends JButton {
 		super.paintComponent(g);
 	}
 }
-
+// TODO 400 x 200 폼 전용 버튼
 class form_400_200_Button extends JButton {
 	public form_400_200_Button() {
 		super();
