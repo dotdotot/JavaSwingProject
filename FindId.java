@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.swing.*;
 
+// TODO 아이디찾기Class
 public class FindId extends JFrame {
     // TODO 정보
 	public static ArrayList<User> userList = new ArrayList<User>();
