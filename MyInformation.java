@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+// TODO 내 정보Class
 public class MyInformation extends JFrame {
     // TODO 정보
 	User user = new User();
