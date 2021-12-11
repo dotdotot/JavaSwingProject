@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.*;
 import java.text.*;
 
+// TODO 메인Class
 public class Main extends JFrame {
 	// TODO 정보
 	User user = new User();
