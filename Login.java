@@ -30,7 +30,25 @@ public class Login extends JFrame {
 
 		// 영화 데모데이터 추가
 		user.pos.productSeatPlus("라스트 나잇 인 소호", 8000, 5000, "패션 디자이너의 꿈을 가지고 상경한 한 소녀!", 0);
-		user.pos.productSeatPlus("연애 빠진 로맨스", 8000, 5000, "로맨승", 10);
+		user.pos.productSeatPlus("연애 빠진 로맨스1", 8000, 5000, "로맨승", 0);
+		user.pos.productSeatPlus("라스트 나잇 인 소호2", 8000, 5000, "나잇", 0);
+		user.pos.productSeatPlus("라스트 나잇 인 소호3", 8000, 5000, "인", 0);
+		user.pos.productSeatPlus("스파이더맨", 8000, 5000, "스파이더맨2", 0);
+		user.pos.productSeatPlus("유체이탈자", 8000, 5000, "유체이탈자3", 0);
+		user.pos.productSeatPlus("리슨", 8000, 5000, "리슨1", 0);
+		user.pos.productSeatPlus("듄", 8000, 5000, "듄0", 0);
+		user.pos.productSeatPlus("태일이", 8000, 5000, "태일이55", 0);
+
+		// 장부 데모데이터 추가
+		user.pos.report_b.setPurchaseList("19980308112208.김.1200.1.500");
+		user.pos.report_b.setPurchaseList("20180430090000.준.1200.1.500");
+		user.pos.report_b.setPurchaseList("20180722063000.석.1200.1.500");
+		user.pos.report_b.setPurchaseList("20191225063000.김김.1200.1.500");
+		user.pos.report_b.setPurchaseList("20200108073144.준준.1200.1.500");
+		user.pos.report_b.setPurchaseList("20210930001507.석석.1200.1.500");
+		user.pos.report_b.setPurchaseList("20211201002300.김김김.1200.1.500");
+		user.pos.report_b.setPurchaseList("20211211043027.준준준.1200.1.500");
+		user.pos.report_b.setPurchaseList("20211222150000.석석석.1200.1.500");
 
 		userList.add(user);
 

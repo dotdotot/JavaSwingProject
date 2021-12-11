@@ -72,11 +72,11 @@ public class ProductPurchaseList_b {
         String text = "";
 
         Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("MM");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMM");
         String day = format.format(date);
 
         for(int i =0; i< purchaseList.size();i++){
-            String str = purchaseList.get(i).substring(4,6);
+            String str = purchaseList.get(i).substring(0,6);
             if(day.equals(str)){
                 text += purchaseList.get(i) + "/";
             }
