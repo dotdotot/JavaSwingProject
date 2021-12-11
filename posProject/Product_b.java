@@ -1,6 +1,6 @@
 package posProject;
 
-// TODO 상품class
+// TODO 상품class (MoviePos)
 public class Product_b {
     // 상품의 데이터구조를 가지고있는 클래스입니다.
     private String product_name; // 상품이름
