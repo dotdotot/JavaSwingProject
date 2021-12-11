@@ -2,7 +2,7 @@ package posProject;
 
 import java.util.Arrays;
 
-// TODO 좌석체크Class
+// TODO 좌석체크Class (MoviePos)
 public class SeatCheck_b extends Product_b {
     public boolean[] seetc = new boolean[20];
 
