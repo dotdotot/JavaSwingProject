@@ -1,6 +1,6 @@
 package posProject;
 
-// TODO 유통기간class
+// TODO 유통기간class (MoviePos)
 public class ExpirationDate_b extends Product_b {
     // 유통기간
     private String exDate;
