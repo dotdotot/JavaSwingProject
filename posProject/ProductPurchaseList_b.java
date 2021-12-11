@@ -3,7 +3,7 @@ package posProject;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-// TODO 구매내역Class ()
+// TODO 구매내역Class (MoviePos)
 public class ProductPurchaseList_b {
     // 제품 구입 내역을 저장하고 반환하는 클래스 입니다.
     public List<String> purchaseList = new ArrayList<String>();
