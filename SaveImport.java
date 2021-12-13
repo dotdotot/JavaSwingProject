@@ -1,204 +1,374 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
+
+import posProject.*;
+import java.io.*;
 
 public class SaveImport {
 
-	void userSave(ArrayList<User> userL) {// ÀúÀåÇÏ±â À§ÇÑ ¸Şµå ÀÔ´Ï´Ù.
-		String as1 = ""; // À¯Àú Á¤º¸¸¦ ÇÑ ÁÙÀÇ ¹®ÀÚ¿­·Î ÀúÀåÇÕ´Ï´Ù.
-		String as2 = ""; // »óÇ° Á¤º¸¸¦ ÇÑ ÁÙÀÇ ¹®ÀÚ¿­·Î ÀúÀåÇÕ´Ï´Ù.
-		String as3 = ""; // ±¸¸Å ³»¿ªÀ» ÇÑ ÁÙÀÇ ¹®ÀÚ¿­·Î ÀúÀåÇÕ´Ï´Ù.
-		String separator1 = "//";// À¯Àú Ç×¸ñ ºĞ¸®¸¦ À§ÇÑ ±¸ºĞÀÚ ÀÔ´Ï´Ù.
-		String separator2 = "//";// »óÇ° Ç×¸ñ ºĞ¸®¸¦ À§ÇÑ ±¸ºĞÀÚ ÀÔ´Ï´Ù.
-		String separator3 = "*!*\n";//ÀÏ¹İ»óÇ°°ú ÁÂ¼® »óÇ°ÀÇ ºĞ¸®¸¦ À§ÇÑ ±¸ºĞÀÚÀÔ´Ï´Ù.
-		String filePath = "c:\\javaTxt\\userList.txt"; // ÄÄÇ»ÅÍ¿¡ À¯Àú Á¤º¸¸¦ ÀúÀåÇÒ À§Ä¡¸¦ ´ã°í ÀÖ½À´Ï´Ù.
-		for (int a1 = 0; a1 < userL.size(); a1++) { // À¯Àú ¹è¿­ÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÕ´Ï´Ù.
-			String id = userL.get(a1).getId();
-			String pw = userL.get(a1).getPw();
-			as1 += id;
-			as1 += separator1;
-			as1 += pw;
-			as1 += separator1;
-			as1 += userL.get(a1).getName();
-			as1 += separator1;
-			as1 += userL.get(a1).getGender();
-			as1 += separator1;
-			as1 += userL.get(a1).getBirthDate();
-			as1 += separator1;
-			as1 += userL.get(a1).getPhoneNumber();
-			as1 += separator1;
-			as1 += userL.get(a1).getAddress();
-			as1 += separator1;
-			as1 += userL.get(a1).geteMail();
-			as1 += separator1;
-			as1 += userL.get(a1).getPwQuestion();
-			as1 += "\n"; // °³Çà¹®ÀÚ¸¦ ´õÇÏ¿© À¯Àú¿Í ´Ù¸¥À¯ÀúÀÇ Á¤º¸¸¦ ±¸ºĞÇØ Áİ´Ï´Ù.
-			for(int k = 0; k < userL.get(a1).pos.product_b.size(); k++) { // ÀÏ¹İ »óÇ°ÀÇ Á¤º¸¸¦ ºÒ·¯¿Í ÇÑ ÁÙÀÇ ¹®ÀÚ¿­ ¹è¿­·Î ¸¸µì´Ï´Ù. °¢ Ç×¸ñÀ» ºĞ¸®ÇØÁÙ ±¸ºĞÀÚ·Î//À» ³Ö½À´Ï´Ù. 
-				as2 += userL.get(a1).pos.product_b.get(k).getProduct_name();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.product_b.get(k).getProduct_price();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.product_b.get(k).getProduct_num();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.product_b.get(k).getProduct_Uprice();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.product_b.get(k).getProduct_description();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.product_b.get(k).getProduct_discount();
-				as2 += "\n"; // »óÇ°°ú »óÇ°À» ±¸ºĞÇØÁÙ¼ö ÀÖµµ·Ï °³Çà¹®ÀÚ¸¦ Ãß°¡ÇÕ´Ï´Ù. 
-			}
-			as2 += separator3; // ÀÏ¹İ»óÇ°, À¯Åë±â°£ÀÌ ÀÖ´Â»óÇ°, ÁÂ¼®ÀÌ ÀÖ´Â »óÇ° (Á¤º¸)¹è¿­À» ±¸ºĞÇÏ±â À§ÇØ ±¸ºĞÀÚ·Î *!*¸¦ Ãß°¡ÇÕ´Ï´Ù.
-			
-			for(int k = 0; k < userL.get(a1).pos.expirationDate_b.size(); k++) {// À¯Åë±â°£ÀÌ ÀÖ´Â »óÇ°ÀÇ Á¤º¸¸¦ ºÒ·¯¿Í ÇÑ ÁÙÀÇ ¹®ÀÚ¿­ ¹è¿­·Î ¸¸µì´Ï´Ù. °¢ Ç×¸ñÀ» ºĞ¸®ÇØÁÙ ±¸ºĞÀÚ·Î//À» ³Ö½À´Ï´Ù. 
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getProduct_name();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getProduct_price();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getProduct_num();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getProduct_Uprice();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getProduct_description();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getProduct_discount();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.expirationDate_b.get(k).getExDate();
-				as2 += "\n"; // »óÇ°°ú »óÇ°À» ±¸ºĞÇØÁÙ¼ö ÀÖµµ·Ï °³Çà¹®ÀÚ¸¦ Ãß°¡ÇÕ´Ï´Ù. 
-			}
-			as2 += separator3; // ÀÏ¹İ»óÇ°, À¯Åë±â°£ÀÌ ÀÖ´Â»óÇ°, ÁÂ¼®ÀÌ ÀÖ´Â »óÇ° (Á¤º¸)¹è¿­À» ±¸ºĞÇÏ±â À§ÇØ ±¸ºĞÀÚ·Î *!*¸¦ Ãß°¡ÇÕ´Ï´Ù.
-			
-			for(int k = 0; k < userL.get(a1).pos.seatCheck_b.size(); k++) { // ÁÂ¼®Á¤º¸¸¦ °¡Áö°íÀÖ´Â »óÇ° Á¤º¸¸¦ ºÒ·¯¿Í ÇÑ ÁÙÀÇ ¹®ÀÚ¿­ ¹è¿­·Î ¸¸µì´Ï´Ù. °¢ Ç×¸ñÀ» ºĞ¸®ÇØÁÙ ±¸ºĞÀÚ·Î//À» ³Ö½À´Ï´Ù. 
-				int abc = 0; // ±¸ºĞ¹®ÀÚ Ãß°¡ ¿©ºÎ¸¦ °áÁ¤ÇÏ´Â º¯¼öÀÔ´Ï´Ù.
-				as2 += userL.get(a1).pos.seatCheck_b.get(k).getProduct_name();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.seatCheck_b.get(k).getProduct_price();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.seatCheck_b.get(k).getProduct_num();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.seatCheck_b.get(k).getProduct_Uprice();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.seatCheck_b.get(k).getProduct_description();
-				as2 += separator2;
-				as2 += userL.get(a1).pos.seatCheck_b.get(k).getProduct_discount();
-				for(int movie1 = 0; movie1< 20; movie1++) {
-					if ((userL.get(a1).pos.seatCheck_b.get(k).getSeetc(movie1))==false) { // ¿¹¸Å°¡ ¿Ï·áµÈ ÁÂ¼®ÀÇ ¹øÈ£¸¦ ºÒ·¯¿Í ÇÑ ÁÙÀÇ ¹®ÀÚ¿­·Î ÀúÀåÇÕ´Ï´Ù. ÁÂ¼®°ú ´Ù¸¥ ÁÂ¼®ÀÇ ¹øÈ£´Â ±¸ºĞÀÚ"." À¸·Î ¼³Á¤ÇÏ¿´½À´Ï´Ù. 
-						if(abc == 0) {
-							as2 += movie1;
-							abc ++;
-						} else {
-							as2 += ".";
-							as2 += movie1;;
-						}
-					}
-				}
-				as2 += "\n"; // »óÇ°°ú »óÇ°À» ±¸ºĞÇØÁÙ¼ö ÀÖµµ·Ï °³Çà¹®ÀÚ¸¦ Ãß°¡ÇÕ´Ï´Ù. 
-			}
-			for(int k = 0; k < userL.get(a1).pos.report_b.purchaseList.size(); k++) { // ±¸¸Å³»¿ªÀ» ºÒ·¯¿Í ¹®ÀÚ¿­·Î ÀúÀåÇÕ´Ï´Ù.
-				as3 += userL.get(a1).pos.report_b.purchaseList.get(k);
-				as3 += "\n";  // »óÇ°°ú »óÇ°À» ±¸ºĞÇØÁÙ¼ö ÀÖµµ·Ï °³Çà¹®ÀÚ¸¦ Ãß°¡ÇÕ´Ï´Ù. 
-			}
+    public void save(ArrayList<User> userList) {
 
-			
-			try {
-				FileWriter fileWriter = new FileWriter("c:\\javaTxt\\"+id+pw+"Product.txt"); // À¯Àú ¾ÆÀÌµğ¿Í+ºñ¹Ğ¹øÈ£+Product.txt ÀÌ ÆÄÀÏ ÀÌ¸§ÀÌ µË´Ï´Ù. ÀÌ ÆÄÀÏÀº »óÇ° Á¤º¸¸¦ ÀúÀåÇÕ´Ï´Ù.
-				fileWriter.write(as2);
-				fileWriter.close();
-			} catch (IOException e) { //¿¹¿Ü ¹ß»ı½Ã 
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				FileWriter fileWriter = new FileWriter("c:\\javaTxt\\"+id+pw+"PurchaseList.txt"); // À¯Àú ¾ÆÀÌµğ¿Í+ºñ¹Ğ¹øÈ£+PurchaseList ÀÌ ÆÄÀÏ ÀÌ¸§ÀÌ µË´Ï´Ù. ÀÌ ÆÄÀÏÀº ±¸¸Å³»¿ªÀ» ÀúÀåÇÕ´Ï´Ù.
-				fileWriter.write(as3);
-				fileWriter.close();
-			} catch (IOException e) {//¿¹¿Ü ¹ß»ı½Ã 
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+        try {
+            FileWriter fstream = new FileWriter("c:\\javaTxt\\userList_Product.txt");
+            String userData = "";
 
-		try {
-			FileWriter fileWriter = new FileWriter(filePath);// "c:\\javaTxt\\userList.txt"ÀÌ ÆÄÀÏ ÀÌ¸§ ÀÔ´Ï´Ù.. ÀÌ ÆÄÀÏÀº À¯Àú Á¤º¸¸¦ ÀúÀåÇÕ´Ï´Ù.
-			fileWriter.write(as1);
+            for (int i = 0; i < userList.size(); i++) {
+                userData = "";
+                String userDString = "!@";
 
-			fileWriter.close();
-		} catch (IOException e) { //¿¹¿Ü ¹ß»ı½Ã 
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+                String id = userList.get(i).getId();
+                userData += id + userDString;
 
-	}
+                String pw = userList.get(i).getPw();
+                userData += pw + userDString;
 
-	void userImport(ArrayList<User> userL) {// ÀúÀåµÈ Á¤º¸¸¦ ºÒ·¯¿À±â À§ÇÑ ¸Ş¼­µå ÀÔ´Ï´Ù.
-		try{/// ¿¹¿ÜÃ³¸®¸¦ À§ÇÑ
-            File file = new File("c:\\\\javaTxt\\\\userList.txt"); // ÆÄÀÏ °´Ã¼ »ı¼º // À¯Àú Á¤º¸¸¦ ´ã°í ÀÖ´Â ÆÄÀÏÀ» ºÒ·¯¿É´Ï´Ù.
-            FileReader filereader = new FileReader(file); // ÀÔ·Â ½ºÆ®¸² »ı¼º
-            BufferedReader bufReader = new BufferedReader(filereader); // ÀÔ·Â ¹öÆÛ »ı¼º
-            String line = ""; // ¹öÆÛ·Î ºÎÅÍ ÇÑÁÙ¾¿ ¹ŞÀ» ¹®ÀÚ¿­À» ÀúÀåÇÒ º¯¼öÀÔ´Ï´Ù.
-            while((line = bufReader.readLine()) != null){ // ¹®ÀÚ¿­À» ÇÑÁÙ¾¿ ºÒ·¯¿É´Ï´Ù. °³Çà¹®ÀÚ¸¦ ±âÁØÀ¸·Î ÇÕ´Ï´Ù. Á¤º¸°¡ ¾øÀ»°æ¿ì ½ÇÇàÇÏÁö ¾Ê½À´Ï´Ù.
-            	int ui = 0;
-            	String[] strArr = line.split("//"); // ±¸ºĞÀÚ¸¦ ÀÌ¿ëÇØ ºĞ¸®ÇÑ ÈÄ ¹®ÀÚ¿­ ¹è¿­¿¡ ¼ø¼­´ë·Î ³Ö¾îÁİ´Ï´Ù.
-            	
-            	userL.add(new User(strArr[0], strArr[1], strArr[2], strArr[3], strArr[4], strArr[5], strArr[6],
-            			strArr[7], strArr[8])); // À¯Àú Á¤º¸¸¦ ºÒ·¯¿Í user¹è¿­¿¡ ÀúÀåÇÕ´Ï´Ù.
+                String name = userList.get(i).getName();
+                userData += name + userDString;
 
-                File file1 = new File("c:\\\\javaTxt\\\\"+strArr[0]+strArr[1]+"Product.txt"); // ÇØ´ç À¯ÀúÀÇ »óÇ° Á¤º¸¸¦ ´ã°í ÀÖ´Â ÆÄÀÏµé ºÒ·¯¿É´Ï´Ù.
-                FileReader filereader1 = new FileReader(file1);
-                BufferedReader bufReader1 = new BufferedReader(filereader1);
-                String line1 = "";// ¹öÆÛ·ÎºÎÅÍ ÇÑÁÙ¾¿ ¹ŞÀ» ¹®ÀÚ¿­À» ÀúÀåÇÒ º¯¼öÀÔ´Ï´Ù.
-                
-                while((line1 = bufReader1.readLine()) != null){
-                	int sArr = 0; // ÁÂ¼®»óÇ°°ú À¯Åë±â°£ »óÇ° ÀÏ¹İ»óÇ°À» ±¸ºĞÇÏ¿© °½Ã¼ ¹è¿­¿¡ ³Ö¾îÁÖ±â À§ÇØ 0ÀÌ¸é ÀÏ¹İ»óÇ°°´Ã¼ »ı¼ºÀ» 1ÀÌ¸é À¯Åë±â°£ °´Ã¼»ı¼ºÀ» 2ÀÌ¸é ÁÂ¼® °´Ã¼»ı¼ºÀ» ÇÕ´Ï´Ù.
-                	int seatn = 0;// ¿µÈ­ ÁÂ¼® Á¤º¸¸¦ ³Ö¾îÁÖ±â À§ÇØ ¼öÁ¤ÇÒ ¿µÈ­ ¹è¿­ÀÇ ¹øÈ£¸¦ ÀúÀåÇÕ´Ï´Ù.int seatn = 0;// ¿µÈ­ ÁÂ¼® Á¤º¸¸¦ ³Ö¾îÁÖ±â À§ÇØ ¼öÁ¤ÇÒ ¿µÈ­ ¹è¿­ÀÇ ¹øÈ£¸¦ ÀúÀåÇÕ´Ï´Ù.
-                	if(line1.equals("*!*")) { // ÀÏ¹İ»óÇ°, À¯Åë±â°£ÀÌ ÀÖ´Â»óÇ°, ÁÂ¼®ÀÌ ÀÖ´Â »óÇ° (Á¤º¸)¹è¿­À» ±¸ºĞÀÚ *!*·Î ±¸ºĞÇÏ¿© ÇØ´çÇÏ´Â ¹è¿­¿¡ ³Ö¾îÁÖ±â À§ÇØ Ãß°¡ÇÏ¿´¼ü´Ï´Ù.
-                		sArr++;
-                	}else {
-                		if(sArr == 0) { // ÀÏ¹İ»óÇ°ÀÏ °æ¿ìÀÔ´Ï´Ù.
-                			String[] strArr1 = line1.split("//");
-                			userL.get(ui).pos.productPlus(strArr1[0], Integer.parseInt(strArr1[1]), Integer.parseInt(strArr1[2]), Integer.parseInt(strArr1[3]),
-                					strArr1[4], Integer.parseInt(strArr1[5]));
-                    	}else if (sArr == 1) { // À¯Åë±â°£ÀÌ ÀÖ´Â »óÇ°ÀÏ °æ¿ìÀÔ´Ï´Ù.
-                    		String[] strArr1 = line1.split("//");
-                    		userL.get(ui).pos.productPlus(strArr1[0], Integer.parseInt(strArr1[1]), Integer.parseInt(strArr1[2]), Integer.parseInt(strArr1[3]),
-                    				strArr1[4], Integer.parseInt(strArr1[5]), strArr1[6]);
-						}else if (sArr == 2) { // ÁÂ¼®Á¤º¸¸¦ °¡Áö°í ÀÖ´Â »óÇ°ÀÏ °æ¿ìÀÔ´Ï´Ù.
-							String[] strArr1 = line1.split("//");
-							userL.get(ui).pos.productSeatPlus(strArr1[0], Integer.parseInt(strArr1[1]), Integer.parseInt(strArr1[3]), strArr1[4], Integer.parseInt(strArr1[5]));
-							String[] strArr2 = strArr1[6].split("\\.");
-							for(int k = 0; k < strArr2.length; k++) { // ±¸¸ÅµÇ¾î ÀÖ´Â ÁÂ¼®À» ºÒ·¯¿Í¼­ ¾÷·ÎµåÇØ Áİ´Ï´Ù. 
-								userL.get(ui).pos.seatCheck_b.get(seatn).setSeetc(Integer.parseInt(strArr2[k]));
-							}
-							++seatn; //´ÙÀ½ ¿µÈ­·Î Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï ¼ıÀÚ¸¦ Áõ°¡ÇØ Áİ´Ï´Ù.
-						}
-                	}
+                String gender = userList.get(i).getGender();
+                userData += gender + userDString;
+
+                String birthDate = userList.get(i).getBirthDate();
+                userData += birthDate + userDString;
+
+                String phoneNumber = userList.get(i).getPhoneNumber();
+                userData += phoneNumber + userDString;
+
+                String address = userList.get(i).getAddress();
+                userData += address + userDString;
+
+                String eMail = userList.get(i).geteMail();
+                userData += eMail + userDString;
+
+                String pwQuestion = userList.get(i).getPwQuestion();
+                userData += pwQuestion + userDString;
+
+                String pwQuestionAnswer = userList.get(i).getPwQuestionAnswer();
+                userData += pwQuestionAnswer + userDString;
+
+                // System.out.println("product_b : " + userList.get(i).pos.product_b.size() + " / expir : "
+                //         + userList.get(i).pos.expirationDate_b.size()
+                //         + " /seatCheck : " + userList.get(i).pos.seatCheck_b.size() + " /report : "
+                //         + userList.get(i).pos.report_b.purchaseList.size());
+
+                for (int ii = 0; ii < userList.get(i).pos.product_b.size(); ii++) {
+                    String productDString = "!#";
+
+                    String product_name = userList.get(i).pos.product_b.get(ii).getProduct_name(); // ìƒí’ˆì´ë¦„
+                    userData += product_name + productDString;
+
+                    int product_price = userList.get(i).pos.product_b.get(ii).getProduct_price(); // ìƒí’ˆê°€ê²©
+                    userData += product_price + productDString;
+
+                    int product_num = userList.get(i).pos.product_b.get(ii).getProduct_num(); // ìƒí’ˆìˆ˜ëŸ‰
+                    userData += product_num + productDString;
+
+                    int product_Uprice = userList.get(i).pos.product_b.get(ii).getProduct_Uprice(); // ìƒí’ˆë‹¨ê°€
+                    userData += product_Uprice + productDString;
+
+                    String product_description = userList.get(i).pos.product_b.get(ii).getProduct_description(); // ìƒí’ˆì„¤ëª…
+                    userData += product_description + productDString;
+
+                    int product_discount = userList.get(i).pos.product_b.get(ii).getProduct_discount();
+                    userData += product_discount + productDString;
+                }
+
+                for (int ii = 0; ii < userList.get(i).pos.expirationDate_b.size(); ii++) {
+                    String expirationDString = "!%";
+
+                    String expiration_name = userList.get(i).pos.expirationDate_b.get(ii).getProduct_name(); // ìƒí’ˆì´ë¦„
+                    userData += expiration_name + expirationDString;
+
+                    int expiration_price = userList.get(i).pos.expirationDate_b.get(ii).getProduct_price(); // ìƒí’ˆê°€ê²©
+                    userData += expiration_price + expirationDString;
+
+                    int expiration_num = userList.get(i).pos.expirationDate_b.get(ii).getProduct_num(); // ìƒí’ˆìˆ˜ëŸ‰
+                    userData += expiration_num + expirationDString;
+
+                    int expiration_Uprice = userList.get(i).pos.expirationDate_b.get(ii).getProduct_Uprice(); // ìƒí’ˆë‹¨ê°€
+                    userData += expiration_Uprice + expirationDString;
+
+                    String expiration_description = userList.get(i).pos.expirationDate_b.get(ii)
+                            .getProduct_description(); // ìƒí’ˆì„¤ëª…
+                    userData += expiration_description + expirationDString;
+
+                    int expiration_discount = userList.get(i).pos.expirationDate_b.get(ii).getProduct_discount();
+                    userData += expiration_discount + expirationDString;
+
+                    String expiration_exDate = userList.get(i).pos.expirationDate_b.get(ii).getExDate();
+                    userData += expiration_exDate + expirationDString;
+                }
+
+                for (int ii = 0; ii < userList.get(i).pos.seatCheck_b.size(); ii++) {
+                    String seatDString = "!&";
+
+                    String seat_name = userList.get(i).pos.seatCheck_b.get(ii).getProduct_name(); // ìƒí’ˆì´ë¦„
+                    userData += seat_name + seatDString;
+
+                    int seat_price = userList.get(i).pos.seatCheck_b.get(ii).getProduct_price(); // ìƒí’ˆê°€ê²©
+                    userData += seat_price + seatDString;
+
+                    int seat_num = userList.get(i).pos.seatCheck_b.get(ii).getProduct_num(); // ìƒí’ˆìˆ˜ëŸ‰
+                    userData += seat_num + seatDString;
+
+                    int seat_Uprice = userList.get(i).pos.seatCheck_b.get(ii).getProduct_Uprice(); // ìƒí’ˆë‹¨ê°€
+                    userData += seat_Uprice + seatDString;
+
+                    String seat_description = userList.get(i).pos.seatCheck_b.get(ii).getProduct_description(); // ìƒí’ˆì„¤ëª…
+                    userData += seat_description + seatDString;
+
+                    int seat_discount = userList.get(i).pos.seatCheck_b.get(ii).getProduct_discount();
+                    userData += seat_discount + seatDString;
+
+                    for (int iii = 0; iii < 20; iii++) {
+                        userData += userList.get(i).pos.seatCheck_b.get(ii).getSeetc(iii + 1) + seatDString;
+                    }
+                }
+
+                for (int ii = 0; ii < userList.get(i).pos.report_b.purchaseList.size(); ii++) {
+                    String purchaseDString = "@#";
+
+                    if (ii == userList.get(i).pos.report_b.purchaseList.size() - 1) {
+                        userData += userList.get(i).pos.report_b.purchaseList.get(ii);
+                        break;
+                    }
+                    userData += userList.get(i).pos.report_b.purchaseList.get(ii) + purchaseDString;
 
                 }
-                bufReader1.close();
-                
-                File file2 = new File("c:\\\\javaTxt\\\\"+strArr[0]+strArr[1]+"PurchaseList.txt"); // ±¸¸Å³»¿ªÀ» ÀúÀåÇÏ°íÀÖ´Â ÆÄÀÏÁÖ¼ÒÀÔ´Ï´Ù.
-                FileReader filereader2 = new FileReader(file2);
-                BufferedReader bufReader2 = new BufferedReader(filereader2);
-                String line2 = "";
-                while((line2 = bufReader2.readLine()) != null){ // ±¸¸ÅÀåºÎ ÆÄÀÏÀ» ºÒ·¯¿Í ±¸¸ÅÀåºÎ ¹è¿­¿¡ ÀúÀåÇØÁİ´Ï´Ù.
-                	userL.get(ui).pos.report_b.setPurchaseList(line2);
+
+                userData += "\n";
+                // System.out.println(userData);
+                fstream.write(userData);
+            }
+
+            fstream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void load(ArrayList<User> userList) {
+        try {
+            // íŒŒì¼ ê°ì²´ ìƒì„±
+            File file = new File("c:\\javaTxt\\userList_Product.txt");
+            // ì…ë ¥ ìŠ¤íŠ¸ë¦¼ ìƒì„±
+            FileReader filereader = new FileReader(file);
+            // ì…ë ¥ ë²„í¼ ìƒì„±
+            BufferedReader bufReader = new BufferedReader(filereader);
+            String line = "";
+            while ((line = bufReader.readLine()) != null) {
+                // System.out.println();
+                // System.out.println("userArr");
+                String[] userArr = line.split("!@");
+                // for (int i = 0; i < userArr.length; i++) {
+                //     System.out.println(userArr[i]);
+                // }
+                User u1 = new User(userArr[0], userArr[1], userArr[2], userArr[3], userArr[4], userArr[5], userArr[6],
+                        userArr[7], userArr[8], userArr[9]);
+
+                // System.out.println();
+                // System.out.println("productArr");
+                String[] productArr = userArr[userArr.length - 1].split("!#");
+                // for (int i = 0; i < productArr.length; i++) {
+                //     System.out.println(productArr[i]);
+                // }
+                for (int i = 0; i < productArr.length - 1; i++) {
+                    String product_name = productArr[i]; // ìƒí’ˆì´ë¦„
+                    ++i;
+                    int product_price = Integer.parseInt(productArr[i]); // ìƒí’ˆê°€ê²©
+                    ++i;
+                    int product_num = Integer.parseInt(productArr[i]); // ìƒí’ˆìˆ˜ëŸ‰
+                    ++i;
+                    int product_Uprice = Integer.parseInt(productArr[i]); // ìƒí’ˆë‹¨ê°€
+                    ++i;
+                    String product_description = productArr[i]; // ìƒí’ˆì„¤ëª…
+                    ++i;
+                    int product_discount = Integer.parseInt(productArr[i]);
+
+                    Product_b p1 = new Product_b(product_name, product_price, product_num, product_Uprice,
+                            product_description, product_discount);
+                    u1.pos.product_b.add(p1);
                 }
-                
-                bufReader2.close();
-                ++ui;
-            }           
+
+                // System.out.println();
+                // System.out.println("expirationArr");
+                String[] expirationArr = productArr[productArr.length - 1].split("!%");
+                // for (int i = 0; i < expirationArr.length; i++) {
+                //     System.out.println(expirationArr[i]);
+                // }
+                for (int i = 0; i < expirationArr.length - 1; i++) {
+                    String product_name = expirationArr[i]; // ìƒí’ˆì´ë¦„
+                    ++i;
+                    int product_price = Integer.parseInt(expirationArr[i]); // ìƒí’ˆê°€ê²©
+                    ++i;
+                    int product_num = Integer.parseInt(expirationArr[i]); // ìƒí’ˆìˆ˜ëŸ‰
+                    ++i;
+                    int product_Uprice = Integer.parseInt(expirationArr[i]); // ìƒí’ˆë‹¨ê°€
+                    ++i;
+                    String product_description = expirationArr[i]; // ìƒí’ˆì„¤ëª…
+                    ++i;
+                    int product_discount = Integer.parseInt(expirationArr[i]);
+                    ++i;
+                    String exDate = expirationArr[i];
+
+                    ExpirationDate_b e1 = new ExpirationDate_b(product_name, product_price, product_num, product_Uprice,
+                            product_description, product_discount, exDate);
+                    u1.pos.expirationDate_b.add(e1);
+                }
+
+                // System.out.println();
+                // System.out.println("seat");
+                String[] seatArr = expirationArr[expirationArr.length - 1].split("!&");
+                // for (int i = 0; i < seatArr.length; i++) {
+                //     System.out.println(seatArr[i]);
+                // }
+                for (int i = 0; i < seatArr.length - 1; i++) {
+                    String product_name = seatArr[i]; // ìƒí’ˆì´ë¦„
+                    ++i;
+                    int product_price = Integer.parseInt(seatArr[i]); // ìƒí’ˆê°€ê²©
+                    ++i;
+                    int product_num = Integer.parseInt(seatArr[i]); // ìƒí’ˆìˆ˜ëŸ‰
+                    ++i;
+                    int product_Uprice = Integer.parseInt(seatArr[i]); // ìƒí’ˆë‹¨ê°€
+                    ++i;
+                    String product_description = seatArr[i]; // ìƒí’ˆì„¤ëª…
+                    ++i;
+                    int product_discount = Integer.parseInt(seatArr[i]);
+                    ++i;
+
+                    SeatCheck_b s1 = new SeatCheck_b(product_name, product_price, product_Uprice, product_description,
+                            product_discount);
+
+                    for (int ii = 0; ii < 20; ii++) {
+                        if (seatArr[i].equals("false")) {
+                            s1.setSeetc(ii + 1);
+                        }
+                        if (ii != 19) {
+                            i++;
+                        }
+                    }
+
+                    u1.pos.seatCheck_b.add(s1);
+                }
+
+                // System.out.println();
+                // System.out.println("pruchase");
+                String[] pruchaseArr = seatArr[seatArr.length - 1].split("@#");
+                // for (int i = 0; i < pruchaseArr.length; i++) {
+                //     System.out.println(pruchaseArr[i]);
+                // }
+                for (int i = 0; i < pruchaseArr.length; i++) {
+                    String pruchase = pruchaseArr[i];
+                    u1.pos.report_b.purchaseList.add(pruchase);
+                }
+
+                userList.add(u1);
+            }
+
+            // .readLine()ì€ ëì— ê°œí–‰ë¬¸ìë¥¼ ì½ì§€ ì•ŠëŠ”ë‹¤.
             bufReader.close();
-        }catch (FileNotFoundException e) { //¿¹¿Ü ¹ß»ı½Ã 
+        } catch (FileNotFoundException e) {
             // TODO: handle exception
-        }catch(IOException e){ //¿¹¿Ü ¹ß»ı½Ã 
+        } catch (IOException e) {
             System.out.println(e);
         }
-	}
 
-	public static void main(String[] args) {  // Å×½ºÆ®¸¦ À§ÇØ Ãß°¡ÇÑ ÄÚµå·Î  ÇÁ·Î±×·¥ ¿Ï¼º½Ã »èÁ¦ ºÎÅ¹µå¸³´Ï´Ù.
-	}
+    }
 
+    public static void main(String[] args) {
+        // ArrayList<User> user = new ArrayList<User>();
+        // User u1 = new User("123", "123", "ê¹€ì¤€ì„", "ë‚¨", "1998-03-08", "010-9206-9486", "ëŒ€ì „ ì„œêµ¬ ë„ë§ˆë™ 543-16",
+        //         "dotdotot203@naver.com", "ë³´ë¬¼ 1í˜¸ëŠ”?", "ëˆ");
+
+        // // ìƒí’ˆ ë°ëª¨ë°ì´í„° ì¶”ê°€
+        // u1.pos.productPlus("í™ˆëŸ°ë³¼", 1500, 100, 1000, "í™ˆëŸ°ë³¼ê³¼ì", 0, "20220108");
+        // u1.pos.productPlus("ì¬ì¹©", 1800, 150, 800, "ë°”ì‚­ë°”ì‚­í•œ ê³¼ì", 5, "20220307");
+        // u1.pos.productPlus("ë°”ë‚˜ë‚˜í‚¥", 1200, 60, 500, "ë°”ë‚˜ë‚˜ë§› ê³¼ì", 0, "20220307");
+        // u1.pos.productPlus("ì˜¤ì˜ˆìŠ¤", 4500, 10, 3000, "ì´ˆì½œë¦¿ ë¹µ ê°™ì€ ê³¼ì", 10, "20220307");
+        // u1.pos.productPlus("ëˆ„ë„¤ë ë„¤", 800, 300, 300, "ëˆ„ë„¤ë ë„¤ê³¼ì", 0, "20220307");
+        // u1.pos.productPlus("ìƒˆìš°ê¹¡", 1400, 100, 800, "ì–´ë””ì„œë‚˜ ë¨¹ì„ ìˆ˜ ìˆëŠ” ì¤‘ë…ì„±ìˆëŠ” ê³¼ì", 0, "20220309");
+        // u1.pos.productPlus("ë§¤ìš´ìƒˆìš°ê¹¡", 1600, 100, 900, "ì–´ë””ì„œë‚˜ ë¨¹ì„ ìˆ˜ ìˆëŠ” ì¤‘ë…ì„±ìˆëŠ” ë§¤ìš´ê³¼ì", 0, "20220307");
+        // u1.pos.productPlus("ë¹ˆì¸ ", 2300, 40, 1500, "ë¨¹ì–´ë³¸ ì‚¬ëŒë“¤ë§Œ ì•„ëŠ” ê³¼ì", 0, "20220307");
+        // u1.pos.productPlus("ì›¨í•˜ìŠ¤", 900, 100, 400, "ì¤‘ë…ì„± ì§„ì§œ.. ëŒ€ë°•ì„", 0, "20220824");
+        // u1.pos.productPlus("ê¸°ë…í’ˆ", 10000, 3, 6500, "ê¸°ë…í’ˆì…ë‹ˆë‹¤", 0);
+
+        // // ì˜í™” ë°ëª¨ë°ì´í„° ì¶”ê°€
+        // u1.pos.productSeatPlus("ë¼ìŠ¤íŠ¸ ë‚˜ì‡ ì¸ ì†Œí˜¸", 8000, 5000, "íŒ¨ì…˜ ë””ìì´ë„ˆì˜ ê¿ˆì„ ê°€ì§€ê³  ìƒê²½í•œ í•œ ì†Œë…€!", 0);
+        // u1.pos.productSeatPlus("ì—°ì•  ë¹ ì§„ ë¡œë§¨ìŠ¤1", 8000, 5000, "ë¡œë§¨ìŠ¹", 0);
+        // u1.pos.productSeatPlus("ë¼ìŠ¤íŠ¸ ë‚˜ì‡ ì¸ ì†Œí˜¸2", 8000, 5000, "ë‚˜ì‡", 0);
+        // u1.pos.productSeatPlus("ë¼ìŠ¤íŠ¸ ë‚˜ì‡ ì¸ ì†Œí˜¸3", 8000, 5000, "ì¸", 0);
+        // u1.pos.productSeatPlus("ìŠ¤íŒŒì´ë”ë§¨", 8000, 5000, "ìŠ¤íŒŒì´ë”ë§¨2", 0);
+        // u1.pos.productSeatPlus("ìœ ì²´ì´íƒˆì", 8000, 5000, "ìœ ì²´ì´íƒˆì3", 0);
+        // u1.pos.productSeatPlus("ë¦¬ìŠ¨", 8000, 5000, "ë¦¬ìŠ¨1", 0);
+        // u1.pos.productSeatPlus("ë“„", 8000, 5000, "ë“„0", 0);
+        // u1.pos.productSeatPlus("íƒœì¼ì´", 8000, 5000, "íƒœì¼ì´55", 0);
+
+        // // ì¥ë¶€ ë°ëª¨ë°ì´í„° ì¶”ê°€
+        // u1.pos.report_b.setPurchaseList("19980308112208.ê¹€.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20180430090000.ì¤€.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20180722063000.ì„.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20191225063000.ê¹€ê¹€.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20200108073144.ì¤€ì¤€.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20210930001507.ì„ì„.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20211201002300.ê¹€ê¹€ê¹€.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20211211043027.ì¤€ì¤€ì¤€.1200.1.500");
+        // u1.pos.report_b.setPurchaseList("20211222150000.ì„ì„ì„.1200.1.500");
+
+        // user.add(u1);
+
+        // User u2 = new User("234", "234", "ë°•ìœ¤ì• ", "ì—¬", "1969-02-10", "010-5005-4307", "ì„œìš¸",
+        //         "dbsdo3378@naver.com", "ë³´ë¬¼ 1í˜¸ëŠ”?", "ê°€ì¡±");
+
+        // // ìƒí’ˆ ë°ëª¨ë°ì´í„° ì¶”ê°€
+        // u2.pos.productPlus("í™ˆëŸ°ë³¼", 1500, 100, 1000, "í™ˆëŸ°ë³¼ê³¼ì", 0, "20220108");
+        // u2.pos.productPlus("ì¬ì¹©", 1800, 150, 800, "ë°”ì‚­ë°”ì‚­í•œ ê³¼ì", 5, "20220307");
+        // u2.pos.productPlus("ë°”ë‚˜ë‚˜í‚¥", 1200, 60, 500, "ë°”ë‚˜ë‚˜ë§› ê³¼ì", 0, "20220307");
+        // u2.pos.productPlus("ì˜¤ì˜ˆìŠ¤", 4500, 10, 3000, "ì´ˆì½œë¦¿ ë¹µ ê°™ì€ ê³¼ì", 10, "20220307");
+        // u2.pos.productPlus("ëˆ„ë„¤ë ë„¤", 800, 300, 300, "ëˆ„ë„¤ë ë„¤ê³¼ì", 0, "20220307");
+        // u2.pos.productPlus("ìƒˆìš°ê¹¡", 1400, 100, 800, "ì–´ë””ì„œë‚˜ ë¨¹ì„ ìˆ˜ ìˆëŠ” ì¤‘ë…ì„±ìˆëŠ” ê³¼ì", 0, "20220309");
+        // u2.pos.productPlus("ë§¤ìš´ìƒˆìš°ê¹¡", 1600, 100, 900, "ì–´ë””ì„œë‚˜ ë¨¹ì„ ìˆ˜ ìˆëŠ” ì¤‘ë…ì„±ìˆëŠ” ë§¤ìš´ê³¼ì", 0, "20220307");
+        // u2.pos.productPlus("ë¹ˆì¸ ", 2300, 40, 1500, "ë¨¹ì–´ë³¸ ì‚¬ëŒë“¤ë§Œ ì•„ëŠ” ê³¼ì", 0, "20220307");
+        // u2.pos.productPlus("ì›¨í•˜ìŠ¤", 900, 100, 400, "ì¤‘ë…ì„± ì§„ì§œ.. ëŒ€ë°•ì„", 0, "20220824");
+        // u2.pos.productPlus("ê¸°ë…í’ˆ", 10000, 3, 6500, "ê¸°ë…í’ˆì…ë‹ˆë‹¤", 0);
+
+        // // ì˜í™” ë°ëª¨ë°ì´í„° ì¶”ê°€
+        // u2.pos.productSeatPlus("ë¼ìŠ¤íŠ¸ ë‚˜ì‡ ì¸ ì†Œí˜¸", 8000, 5000, "íŒ¨ì…˜ ë””ìì´ë„ˆì˜ ê¿ˆì„ ê°€ì§€ê³  ìƒê²½í•œ í•œ ì†Œë…€!", 0);
+        // u2.pos.productSeatPlus("ì—°ì•  ë¹ ì§„ ë¡œë§¨ìŠ¤1", 8000, 5000, "ë¡œë§¨ìŠ¹", 0);
+        // u2.pos.productSeatPlus("ë¼ìŠ¤íŠ¸ ë‚˜ì‡ ì¸ ì†Œí˜¸2", 8000, 5000, "ë‚˜ì‡", 0);
+        // u2.pos.productSeatPlus("ë¼ìŠ¤íŠ¸ ë‚˜ì‡ ì¸ ì†Œí˜¸3", 8000, 5000, "ì¸", 0);
+        // u2.pos.productSeatPlus("ìŠ¤íŒŒì´ë”ë§¨", 8000, 5000, "ìŠ¤íŒŒì´ë”ë§¨2", 0);
+        // u2.pos.productSeatPlus("ìœ ì²´ì´íƒˆì", 8000, 5000, "ìœ ì²´ì´íƒˆì3", 0);
+        // u2.pos.productSeatPlus("ë¦¬ìŠ¨", 8000, 5000, "ë¦¬ìŠ¨1", 0);
+        // u2.pos.productSeatPlus("ë“„", 8000, 5000, "ë“„0", 0);
+        // u2.pos.productSeatPlus("íƒœì¼ì´", 8000, 5000, "íƒœì¼ì´55", 0);
+
+        // // ì¥ë¶€ ë°ëª¨ë°ì´í„° ì¶”ê°€
+        // u2.pos.report_b.setPurchaseList("19980308112208.ê¹€.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20180430090000.ì¤€.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20180722063000.ì„.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20191225063000.ê¹€ê¹€.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20200108073144.ì¤€ì¤€.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20210930001507.ì„ì„.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20211201002300.ê¹€ê¹€ê¹€.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20211211043027.ì¤€ì¤€ì¤€.1200.1.500");
+        // u2.pos.report_b.setPurchaseList("20211222150000.ì„ì„ì„.1200.1.500");
+
+        // user.add(u2);
+
+        // SaveImport s = new SaveImport();
+        // s.save(user);
+        // s.load(user);
+
+        // System.out.println("user : " + user.size() + " /product : " + user.get(0).pos.product_b.size()
+        //         + " /expiration : " + user.get(0).pos.expirationDate_b.size() + " /seatcheck : "
+        //         + user.get(0).pos.seatCheck_b.size() + " /report : " + user.get(0).pos.report_b.purchaseList.size());
+
+        // System.out.println(user.get(2).getId() + " " + user.get(2).getPw() + " " + user.get(2).getName() + "product : " + user.get(2).pos.product_b.size()
+        // + " /expiration : " + user.get(2).pos.expirationDate_b.size() + " /seatcheck : "
+        // + user.get(2).pos.seatCheck_b.size() + " /report : " + user.get(2).pos.report_b.purchaseList.size());
+
+        // System.out.println(user.get(3).getId() + " " + user.get(3).getPw() + " " + user.get(3).getName() + "product : " + user.get(3).pos.product_b.size()
+        // + " /expiration : " + user.get(3).pos.expirationDate_b.size() + " /seatcheck : "
+        // + user.get(3).pos.seatCheck_b.size() + " /report : " + user.get(3).pos.report_b.purchaseList.size());
+    }
 }

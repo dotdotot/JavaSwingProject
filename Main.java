@@ -46,7 +46,7 @@ public class Main extends JFrame {
 		profitLabel.setBounds(50, 90, 200, 50);
 
 		// TODO 로그아웃
-		JButton logoutButton = new JButton("로그아웃");
+		RoundedButton logoutButton = new RoundedButton("로그아웃");
 		logoutButton.setBounds(590, 10, 90, 30);
 		logoutButton.setBackground(Color.WHITE);
 		logoutButton.addMouseListener(new MouseAdapter() {
@@ -57,7 +57,7 @@ public class Main extends JFrame {
 		});
 
 		// TODO 내 정보
-		JButton myInformationButton = new JButton("내 정보");
+		RoundedButton myInformationButton = new RoundedButton("내 정보");
 		myInformationButton.setBounds(45, 200, 250, 40);
 		myInformationButton.setBackground(Color.WHITE);
 		myInformationButton.addMouseListener(new MouseAdapter() {
@@ -68,7 +68,7 @@ public class Main extends JFrame {
 		});
 
 		// TODO 환불
-		JButton RefundButton = new JButton("환불");
+		RoundedButton RefundButton = new RoundedButton("환불");
 		RefundButton.setBounds(400, 200, 250, 40);
 		RefundButton.setBackground(Color.WHITE);
 		RefundButton.addMouseListener(new MouseAdapter() {
@@ -79,7 +79,7 @@ public class Main extends JFrame {
 		});
 
 		// TODO 계산
-		JButton calculationButton = new JButton("계산");
+		RoundedButton calculationButton = new RoundedButton("계산");
 		calculationButton.setBounds(45, 250, 250, 40);
 		calculationButton.setBackground(Color.WHITE);
 		calculationButton.addMouseListener(new MouseAdapter() {
@@ -90,7 +90,7 @@ public class Main extends JFrame {
 		});
 
 		// TODO 월별 보고서
-		JButton monthRefortButton = new JButton("월별 보고서");
+		RoundedButton monthRefortButton = new RoundedButton("월별 보고서");
 		monthRefortButton.setBounds(400, 250, 250, 40);
 		monthRefortButton.setBackground(Color.WHITE);
 		monthRefortButton.addMouseListener(new MouseAdapter() {
@@ -101,7 +101,7 @@ public class Main extends JFrame {
 		});
 
 		// TODO 물품 관리
-		JButton productsSuperintendButton = new JButton("물품 관리");
+		RoundedButton productsSuperintendButton = new RoundedButton("물품 관리");
 		productsSuperintendButton.setBounds(45, 300, 250, 40);
 		productsSuperintendButton.setBackground(Color.WHITE);
 		productsSuperintendButton.addMouseListener(new MouseAdapter() {
@@ -116,7 +116,7 @@ public class Main extends JFrame {
 		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
 		String year = yearFormat.format(date);
 
-		JButton yearRefortButton = new JButton(year + " 보고서");
+		RoundedButton yearRefortButton = new RoundedButton(year + " 보고서");
 		yearRefortButton.setBounds(400, 300, 250, 40);
 		yearRefortButton.setBackground(Color.WHITE);
 		yearRefortButton.addMouseListener(new MouseAdapter() {
@@ -142,8 +142,17 @@ public class Main extends JFrame {
 		c.add(productsSuperintendButton);
 		c.add(yearRefortButton);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_3.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
 	}
 
 	// public Main(User u) {

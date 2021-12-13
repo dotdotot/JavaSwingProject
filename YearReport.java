@@ -38,7 +38,7 @@ public class YearReport extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -59,7 +59,7 @@ public class YearReport extends JFrame {
 
 		// 총 매출과 순수익 자르기
 		String t = user.pos.report_b.year();
-		String []tArr = t.split(",");
+		String[] tArr = t.split(",");
 
 		// TODO 총 매출
 		JLabel allSalesTextLabel = new JLabel("총 매출 : ");
@@ -81,7 +81,7 @@ public class YearReport extends JFrame {
 		productPageLabel.setBounds(575, 275, 150, 20);
 
 		// TODO 일반상품 페이지 이전
-		JButton pageBackButton = new JButton("이전");
+		RoundedButton pageBackButton = new RoundedButton("이전");
 		pageBackButton.setBounds(390, 300, 60, 25);
 		pageBackButton.setBackground(Color.WHITE);
 		pageBackButton.addMouseListener(new MouseAdapter() {
@@ -100,7 +100,7 @@ public class YearReport extends JFrame {
 			}
 		});
 		// TODO 일반상품 페이지 다음
-		JButton pageNextButton = new JButton("다음");
+		RoundedButton pageNextButton = new RoundedButton("다음");
 		pageNextButton.setBounds(490, 300, 60, 25);
 		pageNextButton.setBackground(Color.WHITE);
 		pageNextButton.addMouseListener(new MouseAdapter() {
@@ -129,85 +129,94 @@ public class YearReport extends JFrame {
 		c.add(pageBackButton);
 		c.add(pageNextButton);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
 	}
 
-		// TODO 일반상품 productPanel()
-		public int productPanel() {
-			String productArr[] = user.pos.report_b.yearList().split("/");
-			System.out.println("상품의 총 개수 : " + productArr.length);
-	
-			// 생성해야하는 판넬의 개수를 가져오는 코드
-			int panelNum = productArr.length / 4;
-			if (productArr.length % 4 != 0) {
-				panelNum++;
-			}
-	
-			// 판넬 생성
-			for (int i = 0; i < panelNum; i++) {
-				panel();
-			}
-	
-			// 판넬모두 안보이게 설정
-			for (int i = 0; i < panelList.size(); i++) {
-				super.add(panelList.get(i));
-				panelList.get(i).setVisible(false);
-			}
-	
-			// 일반상품 버튼 라벨링
-			int index = 0;
-			for (int i = 0; i < buttonListListIndex; i++) {
-				for (int ii = 0; ii < 4; ii++) {
-					buttonListList.get(i).get(ii).setText(productArr[index]);
-					if (index == productArr.length - 1) {
-						break;
-					}
-					index++;
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_2.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
+	}
+
+	// TODO 일반상품 productPanel()
+	public int productPanel() {
+		String productArr[] = user.pos.report_b.yearList().split("/");
+		System.out.println("상품의 총 개수 : " + productArr.length);
+
+		// 생성해야하는 판넬의 개수를 가져오는 코드
+		int panelNum = productArr.length / 4;
+		if (productArr.length % 4 != 0) {
+			panelNum++;
+		}
+
+		// 판넬 생성
+		for (int i = 0; i < panelNum; i++) {
+			panel();
+		}
+
+		// 판넬모두 안보이게 설정
+		for (int i = 0; i < panelList.size(); i++) {
+			super.add(panelList.get(i));
+			panelList.get(i).setVisible(false);
+		}
+
+		// 일반상품 버튼 라벨링
+		int index = 0;
+		for (int i = 0; i < buttonListListIndex; i++) {
+			for (int ii = 0; ii < 4; ii++) {
+				buttonListList.get(i).get(ii).setText(productArr[index]);
+				if (index == productArr.length - 1) {
+					break;
 				}
+				index++;
 			}
-	
-			// 처음에는 첫번째 판넬만 보여지도록 설정
-			panelList.get(0).setVisible(true);
-			// 총 상품의 개수 리턴
-			return productArr.length;
 		}
-	
-		// TODO 일반상품 Panel()
-		public void panel() {
-			JPanel productPanel = new JPanel();
-			productPanel.setBackground(Color.WHITE);
-			productPanel.setBounds(280, 50, 380, 225);
-			productPanel.setLayout(null);
-	
-			JButton one = new JButton("");
-			one.setBounds(5, 5, 370, 50);
-			one.setBackground(Color.WHITE);
-			JButton two = new JButton("");
-			two.setBounds(5, 60, 370, 50);
-			two.setBackground(Color.WHITE);
-			JButton three = new JButton("");
-			three.setBounds(5, 115, 370, 50);
-			three.setBackground(Color.WHITE);
-			JButton four = new JButton("");
-			four.setBounds(5, 170, 370, 50);
-			four.setBackground(Color.WHITE);
-	
-			productPanel.add(one);
-			productPanel.add(two);
-			productPanel.add(three);
-			productPanel.add(four);
-	
-			ArrayList<JButton> a = new ArrayList<JButton>();
-			a.add(one);
-			a.add(two);
-			a.add(three);
-			a.add(four);
-			buttonListList.add(a);
-	
-			buttonListListIndex += 1;
-			panelList.add(productPanel);
-		}
+
+		// 처음에는 첫번째 판넬만 보여지도록 설정
+		panelList.get(0).setVisible(true);
+		// 총 상품의 개수 리턴
+		return productArr.length;
+	}
+
+	// TODO 일반상품 Panel()
+	public void panel() {
+		JPanel productPanel = new JPanel();
+		productPanel.setBackground(Color.WHITE);
+		productPanel.setBounds(280, 50, 380, 225);
+		productPanel.setLayout(null);
+
+		JButton one = new JButton("");
+		one.setBounds(5, 5, 370, 50);
+		one.setBackground(Color.WHITE);
+		JButton two = new JButton("");
+		two.setBounds(5, 60, 370, 50);
+		two.setBackground(Color.WHITE);
+		JButton three = new JButton("");
+		three.setBounds(5, 115, 370, 50);
+		three.setBackground(Color.WHITE);
+		JButton four = new JButton("");
+		four.setBounds(5, 170, 370, 50);
+		four.setBackground(Color.WHITE);
+
+		productPanel.add(one);
+		productPanel.add(two);
+		productPanel.add(three);
+		productPanel.add(four);
+
+		ArrayList<JButton> a = new ArrayList<JButton>();
+		a.add(one);
+		a.add(two);
+		a.add(three);
+		a.add(four);
+		buttonListList.add(a);
+
+		buttonListListIndex += 1;
+		panelList.add(productPanel);
+	}
 
 	public static void main(String[] args) {
 	}

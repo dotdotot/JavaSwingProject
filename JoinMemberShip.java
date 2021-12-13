@@ -74,7 +74,7 @@ public class JoinMemberShip extends JFrame {
     JLabel pwQuestionAnswerText = new JLabel("성공");
     // TODO 회원가입 버튼
     // 회원가입 버튼, 회원가입 성공시 나타나는 레이블
-    JButton joinMerbership = new JButton("회원가입");
+    RoundedButton joinMerbership = new RoundedButton("회원가입");
     JLabel joinMerbershipText = new JLabel("성공");
 
     public JoinMemberShip(ArrayList<User> user) {
@@ -426,7 +426,7 @@ public class JoinMemberShip extends JFrame {
         joinMerbershipText.setVisible(false);
 
         // TODO 이전
-        JButton backButton = new JButton("이전");
+        RoundedButton backButton = new RoundedButton("이전");
         backButton.setBounds(10, 10, 60, 25);
         backButton.setBackground(Color.WHITE);
         backButton.addMouseListener(new MouseAdapter() {
@@ -496,6 +496,8 @@ public class JoinMemberShip extends JFrame {
         // 회원가입에 관련된 컴포넌트들 컨테이너에 부착
         c.add(joinMerbership);
         c.add(joinMerbershipText);
+
+        backgroundImage();
 
         // 사이즈 설정(350,550), 창 출력
         setSize(400, 630);
@@ -652,6 +654,13 @@ public class JoinMemberShip extends JFrame {
             }
         }
     }
+
+    public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_1.jpg"));
+		background.setBounds(0, 0, 400, 630);
+		super.add(background);
+	}
 
     // TODO 콘솔 출력
     // 회원가입한 User의 내용들을 콘솔로 출력하기 위해 만든 메소드

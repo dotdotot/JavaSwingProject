@@ -34,11 +34,11 @@ public class ProductPurchaseList_b {
 
     // TODO 주문기록 저장
     public void setPurchaseList(String string) {
-        System.out.println(string + "의 기록을 저장하겠습니다.");
+        // System.out.println(string + "의 기록을 저장하겠습니다.");
         // "20211111234430.삼다수.1200.1.500" 형식의 문자열을 매개변수로 받습니다.
         this.purchaseList.add(string);
 
-        System.out.println("현재 저장된 장부 개수 : " + purchaseList.size());
+        // System.out.println("현재 저장된 장부 개수 : " + purchaseList.size());
     }
 
     // TODO 환불을 위한 메소드 반환값

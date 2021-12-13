@@ -31,7 +31,7 @@ public class MonthlyReport extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -75,7 +75,7 @@ public class MonthlyReport extends JFrame {
 		productPageLabel.setBounds(575, 275, 150, 20);
 
 		// TODO 일반상품 페이지 이전
-		JButton pageBackButton = new JButton("이전");
+		RoundedButton pageBackButton = new RoundedButton("이전");
 		pageBackButton.setBounds(390, 300, 60, 25);
 		pageBackButton.setBackground(Color.WHITE);
 		pageBackButton.addMouseListener(new MouseAdapter() {
@@ -94,7 +94,7 @@ public class MonthlyReport extends JFrame {
 			}
 		});
 		// TODO 일반상품 페이지 다음
-		JButton pageNextButton = new JButton("다음");
+		RoundedButton pageNextButton = new RoundedButton("다음");
 		pageNextButton.setBounds(490, 300, 60, 25);
 		pageNextButton.setBackground(Color.WHITE);
 		pageNextButton.addMouseListener(new MouseAdapter() {
@@ -124,10 +124,18 @@ public class MonthlyReport extends JFrame {
 		c.add(pageBackButton);
 		c.add(pageNextButton);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
 	}
 
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_2.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
+	}
 
 	// TODO 일반상품 productPanel()
 	public int productPanel() {

@@ -28,7 +28,6 @@ public class FindPw extends JFrame {
 
 		// TODO 이전
 		RoundedButton backButton = new RoundedButton("이전");
-		// JButton backButton = new JButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {

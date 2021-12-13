@@ -39,7 +39,7 @@ class CalculationMain extends JFrame {
 		});
 
 		// TODO 상품 선택 정보(좌석상품)
-		JButton seatButton = new JButton("좌석 상품");
+		RoundedButton seatButton = new RoundedButton("좌석 상품");
 		seatButton.setBounds(40, 50, 150, 80);
 		seatButton.setBackground(Color.WHITE);
 		// 버튼을 누르면 좌석 상품으로 가도록 이벤트 부착
@@ -51,7 +51,7 @@ class CalculationMain extends JFrame {
 		});
 
 		// TODO 상품 선택 정보(일반상품)
-		JButton normalButton = new JButton("일반 상품");
+		RoundedButton normalButton = new RoundedButton("일반 상품");
 		normalButton.setBounds(200, 50, 150, 80);
 		normalButton.setBackground(Color.WHITE);
 		// 버튼을 누르면 일반 상품으로 가도록 이벤트 부착
@@ -66,8 +66,17 @@ class CalculationMain extends JFrame {
 		c.add(seatButton);
 		c.add(normalButton);
 
+		backgroundImage();
+
 		setSize(400, 200);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_4.jpg"));
+		background.setBounds(0, 0, 400, 200);
+		super.add(background);
 	}
 }
 
@@ -97,7 +106,7 @@ class SeatProductAll extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 좌석상품 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -141,7 +150,7 @@ class SeatProductAll extends JFrame {
 		productPageLabel.setBounds(560, 293, 150, 20);
 
 		// TODO 좌석상품 페이지 이전
-		JButton pageBackButton = new JButton("이전");
+		RoundedButton pageBackButton = new RoundedButton("이전");
 		pageBackButton.setBounds(270, 300, 60, 25);
 		pageBackButton.setBackground(Color.WHITE);
 		pageBackButton.addMouseListener(new MouseAdapter() {
@@ -161,7 +170,7 @@ class SeatProductAll extends JFrame {
 		});
 
 		// TODO 좌석상품 페이지 다음
-		JButton pageNextButton = new JButton("다음");
+		RoundedButton pageNextButton = new RoundedButton("다음");
 		pageNextButton.setBounds(370, 300, 60, 25);
 		pageNextButton.setBackground(Color.WHITE);
 		pageNextButton.addMouseListener(new MouseAdapter() {
@@ -186,8 +195,17 @@ class SeatProductAll extends JFrame {
 		c.add(pageBackButton);
 		c.add(pageNextButton);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_2.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
 	}
 
 	// TODO 좌석상품 productPanel()
@@ -320,7 +338,7 @@ class SeatProduct extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 좌석Class 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -754,10 +772,18 @@ class SeatProduct extends JFrame {
 		c.add(seat_19_Button);
 		c.add(seat_20_Button);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
 	}
 
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_2.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
+	}
 }
 
 // TODO 일반Class
@@ -785,7 +811,7 @@ class NormalProduct extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 일반Class 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -829,7 +855,7 @@ class NormalProduct extends JFrame {
 		productPageLabel.setBounds(560, 293, 150, 20);
 
 		// TODO 일반Class 페이지 이전
-		JButton pageBackButton = new JButton("이전");
+		RoundedButton pageBackButton = new RoundedButton("이전");
 		pageBackButton.setBounds(270, 300, 60, 25);
 		pageBackButton.setBackground(Color.WHITE);
 		pageBackButton.addMouseListener(new MouseAdapter() {
@@ -848,7 +874,7 @@ class NormalProduct extends JFrame {
 			}
 		});
 		// TODO 일반Class 페이지 다음
-		JButton pageNextButton = new JButton("다음");
+		RoundedButton pageNextButton = new RoundedButton("다음");
 		pageNextButton.setBounds(370, 300, 60, 25);
 		pageNextButton.setBackground(Color.WHITE);
 		pageNextButton.addMouseListener(new MouseAdapter() {
@@ -873,8 +899,17 @@ class NormalProduct extends JFrame {
 		c.add(pageBackButton);
 		c.add(pageNextButton);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_2.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
 	}
 
 	// TODO 일반Class productPanel()
@@ -1012,7 +1047,7 @@ class ProductBuyNum extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 일반상품 수량Class 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -1070,7 +1105,7 @@ class ProductBuyNum extends JFrame {
 		num.setEditable(false);
 
 		// +
-		JButton plusNum = new JButton("+");
+		RoundedButton plusNum = new RoundedButton("+");
 		plusNum.setBackground(Color.WHITE);
 		plusNum.setBounds(80, 110, 60, 30);
 		plusNum.addMouseListener(new MouseAdapter() {
@@ -1102,7 +1137,7 @@ class ProductBuyNum extends JFrame {
 		});
 
 		// -
-		JButton minusNum = new JButton("-");
+		RoundedButton minusNum = new RoundedButton("-");
 		minusNum.setBackground(Color.WHITE);
 		minusNum.setBounds(140, 110, 60, 30);
 		minusNum.addMouseListener(new MouseAdapter() {
@@ -1125,7 +1160,7 @@ class ProductBuyNum extends JFrame {
 		});
 
 		// 계산하기
-		JButton cal = new JButton("계산하기");
+		RoundedButton cal = new RoundedButton("계산하기");
 		cal.setBackground(Color.WHITE);
 		cal.setBounds(230, 60, 100, 50);
 		cal.addMouseListener(new MouseAdapter(){
@@ -1162,6 +1197,13 @@ class ProductBuyNum extends JFrame {
 		setSize(400, 200);
 		setVisible(true);
 	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_4.jpg"));
+		background.setBounds(0, 0, 400, 200);
+		super.add(background);
+	}
 }
 
 // TODO 좌석상품 계산
@@ -1186,7 +1228,7 @@ class CalculationSeatPay extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 좌석상품계산Class 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -1197,7 +1239,7 @@ class CalculationSeatPay extends JFrame {
 		});
 
 		// TODO 좌석상품계산Class 현금
-		JButton cashButton = new JButton("현금");
+		RoundedButton cashButton = new RoundedButton("현금");
 		cashButton.setBounds(40, 50, 150, 80);
 		cashButton.setBackground(Color.WHITE);
 		cashButton.addMouseListener(new MouseAdapter() {
@@ -1212,7 +1254,7 @@ class CalculationSeatPay extends JFrame {
 		});
 
 		// TODO 좌석상품계산Class 카드
-		JButton cardButton = new JButton("카드");
+		RoundedButton cardButton = new RoundedButton("카드");
 		cardButton.setBounds(200, 50, 150, 80);
 		cardButton.setBackground(Color.WHITE);
 		cardButton.addMouseListener(new MouseAdapter() {
@@ -1230,8 +1272,17 @@ class CalculationSeatPay extends JFrame {
 		c.add(cashButton);
 		c.add(cardButton);
 
+		backgroundImage();
+
 		setSize(400, 200);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_4.jpg"));
+		background.setBounds(0, 0, 400, 200);
+		super.add(background);
 	}
 
 	// TODO 좌석상품 bool 변경
@@ -1270,7 +1321,7 @@ class CalculationPay extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 상품계산Class 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -1281,7 +1332,7 @@ class CalculationPay extends JFrame {
 		});
 
 		// TODO 상품계산Class 현금
-		JButton cashButton = new JButton("현금");
+		RoundedButton cashButton = new RoundedButton("현금");
 		cashButton.setBounds(40, 50, 150, 80);
 		cashButton.setBackground(Color.WHITE);
 		cashButton.addMouseListener(new MouseAdapter() {
@@ -1292,7 +1343,7 @@ class CalculationPay extends JFrame {
 		});
 
 		// TODO 상품계산Class 카드
-		JButton cardButton = new JButton("카드");
+		RoundedButton cardButton = new RoundedButton("카드");
 		cardButton.setBounds(200, 50, 150, 80);
 		cardButton.setBackground(Color.WHITE);
 		cardButton.addMouseListener(new MouseAdapter() {
@@ -1306,8 +1357,17 @@ class CalculationPay extends JFrame {
 		c.add(cashButton);
 		c.add(cardButton);
 
+		backgroundImage();
+
 		setSize(400, 200);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_4.jpg"));
+		background.setBounds(0, 0, 400, 200);
+		super.add(background);
 	}
 }
 
@@ -1439,7 +1499,7 @@ class CalculationReceiptCard extends JFrame {
 		resultPrice.setBounds(470, 280, 200, 30);
 		resultPrice.setFont(f1);
 
-		JButton mainButton = new JButton("메인");
+		RoundedButton mainButton = new RoundedButton("메인");
 		mainButton.setBounds(630, 10, 60, 25);
 		mainButton.setBackground(Color.WHITE);
 		mainButton.addMouseListener(new MouseAdapter() {
@@ -1645,7 +1705,7 @@ class CalculationReceiptCash extends JFrame {
 		resultPrice.setBounds(470, 280, 200, 30);
 		resultPrice.setFont(f1);
 
-		JButton mainButton = new JButton("메인");
+		RoundedButton mainButton = new RoundedButton("메인");
 		mainButton.setBounds(630, 10, 60, 25);
 		mainButton.setBackground(Color.WHITE);
 		mainButton.addMouseListener(new MouseAdapter() {

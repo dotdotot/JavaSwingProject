@@ -22,7 +22,7 @@ public class MyInformation extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -84,6 +84,8 @@ public class MyInformation extends JFrame {
 		c.add(emailLabel);
 		c.add(managerPhoneLabel);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
 	}
@@ -105,7 +107,7 @@ public class MyInformation extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 이전
-		JButton backButton = new JButton("이전");
+		RoundedButton backButton = new RoundedButton("이전");
 		backButton.setBounds(10, 10, 60, 25);
 		backButton.setBackground(Color.WHITE);
 		backButton.addMouseListener(new MouseAdapter() {
@@ -167,8 +169,17 @@ public class MyInformation extends JFrame {
 		c.add(emailLabel);
 		c.add(managerPhoneLabel);
 
+		backgroundImage();
+
 		setSize(710, 400);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_2.jpg"));
+		background.setBounds(0, 0, 710, 400);
+		super.add(background);
 	}
 
 	public static void main(String[] args) {

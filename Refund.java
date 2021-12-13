@@ -27,7 +27,7 @@ class Refund_Main extends JFrame {
 		c.setBackground(Color.WHITE);
 
 		// TODO 취소
-		JButton cancelButton = new JButton("취소");
+		RoundedButton cancelButton = new RoundedButton("취소");
 		cancelButton.setBackground(Color.WHITE);
 		cancelButton.setBounds(10, 10, 60, 30);
 		cancelButton.addMouseListener(new MouseAdapter() {
@@ -38,7 +38,7 @@ class Refund_Main extends JFrame {
 		});
 
 		// TODO 환불 
-		JButton refundButton = new JButton("환불");
+		RoundedButton refundButton = new RoundedButton("환불");
 		refundButton.setBackground(Color.WHITE);
 		refundButton.setBounds(320, 10, 60, 30);
 		refundButton.addMouseListener(new MouseAdapter() {
@@ -68,8 +68,17 @@ class Refund_Main extends JFrame {
 		c.add(transactionNumberLabel);
 		c.add(transactionNumberTextField);
 
+		backgroundImage();
+
 		setSize(400, 200);
 		setVisible(true);
+	}
+
+	public void backgroundImage() {
+		JLabel background = new JLabel();
+        background = new JLabel(new ImageIcon("images/image_4.jpg"));
+		background.setBounds(0, 0, 400, 200);
+		super.add(background);
 	}
 }
 
