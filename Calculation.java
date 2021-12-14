@@ -1519,7 +1519,15 @@ class CalculationReceiptCard extends JFrame {
 			int costPriceNum = (int)(resultPriceNum/1.1);
 			int surtaxNum =  resultPriceNum - costPriceNum;
 
+			double discount = 0;
+			if(user.pos.expirationDate_b.get(productIndex).getProduct_discount() != 0){
+				discount = user.pos.expirationDate_b.get(productIndex).getProduct_discount() / 100;
+				discount = resultPriceNum * discount;
+				surtaxNum = surtaxNum - (int)discount;
+			}
+
 			price.setText("가격   : " + costPriceNum + "원");
+			discountPrice.setText("할인금액 : " + discount + "원");
 			surtax.setText("부과세  : " + surtaxNum + "원");
 			resultPrice.setText("총합   : " + resultPriceNum + "원");
 		}
@@ -1532,6 +1540,13 @@ class CalculationReceiptCard extends JFrame {
 			int resultPriceNum = Integer.valueOf(user.pos.product_b.get(productIndex).getProduct_price() * index);
 			int costPriceNum = (int)(resultPriceNum/1.1);
 			int surtaxNum =  resultPriceNum - costPriceNum;
+
+			double discount = 0;
+			if(user.pos.product_b.get(productIndex).getProduct_discount() != 0){
+				discount = user.pos.product_b.get(productIndex).getProduct_discount() / 100;
+				discount = resultPriceNum * discount;
+				surtaxNum = surtaxNum - (int)discount;
+			}
 
 			price.setText("가격   : " + costPriceNum + "원");
 			surtax.setText("부과세  : " + surtaxNum + "원");
@@ -1546,6 +1561,13 @@ class CalculationReceiptCard extends JFrame {
 			int resultPriceNum = Integer.valueOf(user.pos.seatCheck_b.get(productIndex).getProduct_price());
 			int costPriceNum = (int)(resultPriceNum/1.1);
 			int surtaxNum =  resultPriceNum - costPriceNum;
+
+			double discount = 0;
+			if(user.pos.seatCheck_b.get(productIndex).getProduct_discount() != 0){
+				discount = user.pos.seatCheck_b.get(productIndex).getProduct_discount() / 100;
+				discount = resultPriceNum * discount;
+				surtaxNum = surtaxNum - (int)discount;
+			}
 
 			price.setText("가격   : " + costPriceNum + "원");
 			surtax.setText("부과세  : " + surtaxNum + "원");
@@ -1725,6 +1747,13 @@ class CalculationReceiptCash extends JFrame {
 			int costPriceNum = (int)(resultPriceNum/1.1);
 			int surtaxNum =  resultPriceNum - costPriceNum;
 
+			double discount = 0;
+			if(user.pos.expirationDate_b.get(productIndex).getProduct_discount() != 0){
+				discount = user.pos.expirationDate_b.get(productIndex).getProduct_discount() / 100;
+				discount = resultPriceNum * discount;
+				surtaxNum = surtaxNum - (int)discount;
+			}
+
 			price.setText("가격   : " + costPriceNum + "원");
 			surtax.setText("부과세  : " + surtaxNum + "원");
 			resultPrice.setText("총합   : " + resultPriceNum + "원");
@@ -1739,6 +1768,13 @@ class CalculationReceiptCash extends JFrame {
 			int costPriceNum = (int)(resultPriceNum/1.1);
 			int surtaxNum =  resultPriceNum - costPriceNum;
 
+			double discount = 0;
+			if(user.pos.product_b.get(productIndex).getProduct_discount() != 0){
+				discount = user.pos.product_b.get(productIndex).getProduct_discount() / 100;
+				discount = resultPriceNum * discount;
+				surtaxNum = surtaxNum - (int)discount;
+			}
+
 			price.setText("가격   : " + costPriceNum + "원");
 			surtax.setText("부과세  : " + surtaxNum + "원");
 			resultPrice.setText("총합   : " + resultPriceNum + "원");
@@ -1752,6 +1788,13 @@ class CalculationReceiptCash extends JFrame {
 			int resultPriceNum = Integer.valueOf(user.pos.seatCheck_b.get(productIndex).getProduct_price());
 			int costPriceNum = (int)(resultPriceNum/1.1);
 			int surtaxNum =  resultPriceNum - costPriceNum;
+
+			double discount = 0;
+			if(user.pos.seatCheck_b.get(productIndex).getProduct_discount() != 0){
+				discount = user.pos.seatCheck_b.get(productIndex).getProduct_discount() / 100;
+				discount = resultPriceNum * discount;
+				surtaxNum = surtaxNum - (int)discount;
+			}
 
 			price.setText("가격   : " + costPriceNum + "원");
 			surtax.setText("부과세  : " + surtaxNum + "원");

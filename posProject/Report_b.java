@@ -23,6 +23,10 @@ public class Report_b extends ProductPurchaseList_b {
     public String day() {
         // 반환 형식 ex) 9200,6700 9200은 매출이고 6700원은 순이익 입니다.
         // 구분자는 . 입니다.
+        if(purchaseList.size() == 0){
+            return "";
+        }
+
         for (int a = 0; a < purchaseList.size(); a++) {
             String[] strArr = purchaseList.get(a).split("\\.");
             String aa = strArr[0].substring(0, 8);

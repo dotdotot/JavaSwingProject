@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 
+import posProject.*;
+
 // TODO 회원가입Class
 public class JoinMemberShip extends JFrame {
     public static ArrayList<User> userList = new ArrayList<User>();
@@ -638,6 +640,16 @@ public class JoinMemberShip extends JFrame {
                 User user = new User(idTextTemp, pwTextTemp, nameTextTemp, genderTextTemp, birthDateTextTemp,
                         phoneNumberTextTemp, addressTextTemp, eMailTextTemp, pwQuestionTextTemp,
                         pwQuestionAnswerTextTemp);
+
+                // 데모 데이터를 하나씩 추가해줌
+                Product_b p1 = new Product_b("상품 데모데이터", 5000, 500, 3000, "데모데이터", 0);
+                ExpirationDate_b e1 = new ExpirationDate_b("유통기한 상품 데모데이터", 5000, 100, 2000, "데모데이터", 0, "1998-03-08");
+                SeatCheck_b s1 = new SeatCheck_b("영화 데모데이터", 8000, 5000, "영화 데모", 0);
+                user.pos.product_b.add(p1);
+                user.pos.expirationDate_b.add(e1);
+                user.pos.seatCheck_b.add(s1);
+                user.pos.report_b.setPurchaseList("19980308112208.데모.1200.1.500");
+                
                 // ArrayList로 생성된 userList에 객체추가
                 userList.add(user);
 
@@ -656,11 +668,11 @@ public class JoinMemberShip extends JFrame {
     }
 
     public void backgroundImage() {
-		JLabel background = new JLabel();
+        JLabel background = new JLabel();
         background = new JLabel(new ImageIcon("images/image_1.jpg"));
-		background.setBounds(0, 0, 400, 630);
-		super.add(background);
-	}
+        background.setBounds(0, 0, 400, 630);
+        super.add(background);
+    }
 
     // TODO 콘솔 출력
     // 회원가입한 User의 내용들을 콘솔로 출력하기 위해 만든 메소드
