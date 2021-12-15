@@ -733,7 +733,7 @@ class seatProductAdd extends JFrame {
 		int num = 0;
 		try {
 			num = Integer.parseInt(text);
-			if (num < 1 && num > 100) {
+			if (num < 0 || num > 100) {
 				JOptionPane.showMessageDialog(null, "할인율은 1~100 사이여야 합니다.");
 			} else {
 				d = true;
@@ -911,7 +911,7 @@ class ProductAddExpiration extends JFrame {
 		JTextField dayTextField = new JTextField();
 		dayTextField.setBounds(270, 330, 50, 30);
 
-		// TODO 일반상품 추가
+		// TODO 유통기한 상품 추가
 		RoundedButton newProductButton = new RoundedButton("상품추가");
 		newProductButton.setBounds(600, 10, 90, 25);
 		newProductButton.setBackground(Color.WHITE);
@@ -1026,7 +1026,7 @@ class ProductAddExpiration extends JFrame {
 		int num = 0;
 		try {
 			num = Integer.parseInt(text);
-			if (num < 1 && num > 100) {
+			if (num < 0 || num > 100) {
 				JOptionPane.showMessageDialog(null, "할인율은 1~100 사이여야 합니다.");
 			} else {
 				d = true;
@@ -1223,7 +1223,7 @@ class ProductAddNormal extends JFrame {
 		int num = 0;
 		try {
 			num = Integer.parseInt(text);
-			if (num < 1 && num > 100) {
+			if (num < 0 || num > 100) {
 				JOptionPane.showMessageDialog(null, "할인율은 1~100 사이여야 합니다.");
 			} else {
 				d = true;
