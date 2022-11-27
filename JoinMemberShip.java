@@ -649,7 +649,7 @@ public class JoinMemberShip extends JFrame {
                 user.pos.expirationDate_b.add(e1);
                 user.pos.seatCheck_b.add(s1);
                 user.pos.report_b.setPurchaseList("19980308112208.데모.1200.1.500");
-                
+
                 // ArrayList로 생성된 userList에 객체추가
                 userList.add(user);
 
