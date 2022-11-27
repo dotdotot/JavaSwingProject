@@ -1,10 +1,13 @@
-<<<<<<< HEAD
 # Projects
 # Flask-RestApi Server
 🗓 프로젝트 소개 : Flask RestApi Server</br>
 🗓 기간 : 2021.10 ~ 2022.12  </br>
 🗓 팀원:  [준석](https://github.com/dotdotot)</br>
 🗓 리뷰어: [준석](https://github.com/dotdotot)</br></br>
+
+#
+# 주제 선정 이유
+<img width="1017" alt="pos주제선정이유" src="https://user-images.githubusercontent.com/77331459/204138807-9c5f0d5f-cf14-4689-b720-31b39f78c264.png">
 
 #
 # Pos 기능
@@ -43,7 +46,6 @@
 
 # 
 # Java 응용
-#
 ## 캡슐화 
 클래스에 선언된 각각의 변수를 Private으로 선언하고 GetterSetter를 이용하여 값을 주고 받도록 하였습니다.
 
@@ -67,9 +69,17 @@
 
 #
 # 내부 디자인
+<img width="971" alt="내부디자인1" src="https://user-images.githubusercontent.com/77331459/204138922-5507b9b6-038a-485a-9e7b-0c48cdd15bb7.png"></br>
 
+<img width="967" alt="내부디자인2" src="https://user-images.githubusercontent.com/77331459/204138970-0903bef1-1563-4b1d-80c2-c0aa6dd3604a.png"></br>
 
+<img width="991" alt="내부디자인3" src="https://user-images.githubusercontent.com/77331459/204138972-ec640db6-fb16-4f40-8e58-704514d1bc33.png"></br>
 
+<img width="972" alt="내부디자인4" src="https://user-images.githubusercontent.com/77331459/204138977-ff83d553-c7bf-4ba7-8fa9-24568e58869c.png"></br>
+
+<img width="1003" alt="내부디자인5" src="https://user-images.githubusercontent.com/77331459/204138981-378fd531-1f70-4cba-8767-14c778304050.png"></br>
+
+<img width="541" alt="내부디자인6" src="https://user-images.githubusercontent.com/77331459/204138982-1abb7fbc-d57b-4d49-b8d0-d969b9bbeae2.png"></br>
 #
 > 커밋 제목은 최대 50자 입력 </br>
 본문은 한 줄 최대 72자 입력 </br>
@@ -98,8 +108,3 @@ Commit 메세지 </br>
 
 
 
-=======
-# 스윙으로 구현한 pos
-# 영화관의 좌석 선택하는 pos와 상품을 선택하는 pos를 합쳐서 사용할 수 있는 pos를 만들어 보는게 목적
-# 고급 자바 과제 프로그램
->>>>>>> 6288e6cc41be4a35317cf78da6b9507af9605079
